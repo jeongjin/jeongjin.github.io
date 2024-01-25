@@ -131,3 +131,19 @@ function uncheckOthers(checkbox) {
     }
 }
 
+
+function handleDietHabitChange(selectedCheckboxId) {
+    var dietHabits = ['dietHighCarb', 'dietHighMeat', 'dietHighFat', 'dietHighCaffeine', 'dietOvereating', 'dietLowFish', 'dietLowVeggies', 'dietNone'];
+
+    if (selectedCheckboxId === 'dietNone') {
+        dietHabits.forEach(function(habit) {
+            if (habit !== 'dietNone') {
+                document.getElementById(habit).checked = false;
+            }
+        });
+    } else {
+        document.getElementById('dietNone').checked = false;
+    }
+}
+
+
