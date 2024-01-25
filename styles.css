@@ -87,10 +87,12 @@ input[type="text"], input[type="number"], input[type="date"] {
 
 input[type="radio"], input[type="checkbox"] {
     margin-right: 10px;
+    vertical-align: top; /* 옵션을 상단 정렬로 변경 */
 }
 
 label {
     margin-right: 10px;
+    vertical-align: top; /* 라벨을 상단 정렬로 변경 */
 }
 
 .progress-bar-container {
@@ -124,7 +126,8 @@ label {
 
 .survey-page {
     width: 300px; /* 원하는 너비로 설정 */
-    margin: auto; /* 가운데 정렬 */
+    margin: auto; /* 가운데 정렬 제거 */
+    text-align: left; /* 내용을 왼쪽 정렬로 변경 */
 }
 
 @media (max-width: 768px) {
