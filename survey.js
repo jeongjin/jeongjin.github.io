@@ -57,19 +57,19 @@ function updateProgressBar(currentStep, totalSteps) {
 }
 
 function completeStep(currentStep) {
-// 입력값 검증 (예제로 입력값이 있는지만 확인)
-var inputs = document.querySelectorAll('#question' + currentStep + ' input');
-var isValid = Array.from(inputs).every(input => {
-    if(input.type === 'checkbox' || input.type === 'radio') {
-        return document.querySelector('input[name="' + input.name + '"]:checked');
-    }
-    return input.value.trim() !== '';
-});
+    // 입력값 검증 (예제로 입력값이 있는지만 확인)
+    var inputs = document.querySelectorAll('#question' + currentStep + ' input');
+    var isValid = Array.from(inputs).every(input => {
+        if(input.type === 'checkbox' || input.type === 'radio') {
+            return document.querySelector('input[name="' + input.name + '"]:checked');
+        }
+        return input.value.trim() !== '';
+    });
 
-if (!isValid) {
-    alert('모든 필수 항목을 입력해주세요.');
-    return;
-}
+    if (!isValid) {
+        alert('모든 필수 항목을 입력해주세요.');
+        return; // 유효하지 않은 경우 다음으로 넘어가지 않음
+    }
 
     // 현재 단계의 설문을 숨기고 다음 단계의 설문을 표시
     var totalSteps = 15; // 총 설문 단계 수
