@@ -147,3 +147,17 @@ function handleDietHabitChange(selectedCheckboxId) {
 }
 
 
+document.getElementById('form9').addEventListener('change', function(e) {
+    const isNoneSelected = document.getElementById('familyHistoryNone').checked;
+    const checkboxes = document.querySelectorAll('.familyHistory');
+
+    if (e.target.id === 'familyHistoryNone') {
+        checkboxes.forEach(cb => {
+            if (cb.id !== 'familyHistoryNone') cb.checked = false;
+        });
+    } else if (isNoneSelected) {
+        document.getElementById('familyHistoryNone').checked = false;
+    }
+});
+
+

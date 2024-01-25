@@ -91,18 +91,34 @@
 <div id="question6" class="survey-page" style="display:none;">
     <h2>질문 6: 식습관에 대해 알려주세요. (중복선택 가능)</h2>
     <form id="form6">
-        <!-- 식습관 관련 체크박스 추가 -->
-<input type="checkbox" id="option1" name="option1" value="고칼로리 식품 섭취">
-        <label for="option1">고칼로리 식품 섭취</label><br>
-        
-        <input type="checkbox" id="option2" name="option2" value="과도한 당분 섭취">
-        <label for="option2">과도한 당분 섭취</label><br>
-        
-        <input type="checkbox" id="option3" name="option3" value="과도한 소금 섭취">
-        <label for="option3">과도한 소금 섭취</label><br>
+        <input type="checkbox" id="dietHighCarb" name="dietHabit" value="탄수화물이 많은 음식" onclick="handleDietHabitChange('dietHighCarb')">
+        <label for="dietHighCarb">탄수화물이 많은 음식을 자주 먹어요. (빵, 과자, 면 등)</label><br>
+
+        <input type="checkbox" id="dietHighMeat" name="dietHabit" value="고기를 자주 먹어요" onclick="handleDietHabitChange('dietHighMeat')">
+        <label for="dietHighMeat">고기를 자주 먹어요.</label><br>
+
+        <input type="checkbox" id="dietHighFat" name="dietHabit" value="기름진 음식" onclick="handleDietHabitChange('dietHighFat')">
+        <label for="dietHighFat">기름진 음식, 튀긴 음식을 자주 먹어요.</label><br>
+
+        <input type="checkbox" id="dietHighCaffeine" name="dietHabit" value="카페인 음료" onclick="handleDietHabitChange('dietHighCaffeine')">
+        <label for="dietHighCaffeine">커피, 차 등 카페인 함유 음료 또는 탄산음료를 하루 3잔 이상 마셔요.</label><br>
+
+        <input type="checkbox" id="dietOvereating" name="dietHabit" value="과식" onclick="handleDietHabitChange('dietOvereating')">
+        <label for="dietOvereating">과식을 자주 하고, 외식이나 배달음식을 주로 먹어요.</label><br>
+
+        <input type="checkbox" id="dietLowFish" name="dietHabit" value="생선 적게 먹음" onclick="handleDietHabitChange('dietLowFish')">
+        <label for="dietLowFish">등푸른 생선을 먹는 횟수가 주 2회보다 적어요.</label><br>
+
+        <input type="checkbox" id="dietLowVeggies" name="dietHabit" value="채소류 적게 먹음" onclick="handleDietHabitChange('dietLowVeggies')">
+        <label for="dietLowVeggies">채소류, 해조류, 콩, 달걀 등을 잘 먹지 않아요.</label><br>
+
+        <input type="checkbox" id="dietNone" name="dietHabit" value="해당 없음" onclick="handleDietHabitChange('dietNone')">
+        <label for="dietNone">해당 없음</label><br>
+
         <button type="button" onclick="completeStep(6)">다음</button>
     </form>
 </div>
+
 
 <!-- 질문 7 -->
 <div id="question7" class="survey-page" style="display:none;">
@@ -126,18 +142,40 @@
 <div id="question9" class="survey-page" style="display:none;">
     <h2>질문 9: 가족력이 있는 질환을 알려주세요. (중복선택 가능)</h2>
     <form id="form9">
-        <!-- 가족력 질환 관련 체크박스 추가 -->
- <input type="checkbox" id="option1" name="option1" value="당뇨병">
-        <label for="option1">당뇨병</label><br>
+        <input type="checkbox" id="familyHistoryDiabetes" name="familyHistory" value="당뇨병">
+        <label for="familyHistoryDiabetes">당뇨병</label><br>
         
-        <input type="checkbox" id="option2" name="option2" value="고혈압">
-        <label for="option2">고혈압</label><br>
+        <input type="checkbox" id="familyHistoryHypertension" name="familyHistory" value="고혈압">
+        <label for="familyHistoryHypertension">고혈압</label><br>
         
-        <input type="checkbox" id="option3" name="option3" value="암">
-        <label for="option3">암</label><br>
+        <input type="checkbox" id="familyHistoryCancer" name="familyHistory" value="암">
+        <label for="familyHistoryCancer">암</label><br>
+        
+        <input type="checkbox" id="familyHistoryHeartDisease" name="familyHistory" value="심장 질환">
+        <label for="familyHistoryHeartDisease">심장 질환</label><br>
+        
+        <input type="checkbox" id="familyHistoryStroke" name="familyHistory" value="뇌졸중">
+        <label for="familyHistoryStroke">뇌졸중</label><br>
+        
+        <input type="checkbox" id="familyHistoryArthritis" name="familyHistory" value="관절염">
+        <label for="familyHistoryArthritis">관절염</label><br>
+        
+        <input type="checkbox" id="familyHistoryOsteoporosis" name="familyHistory" value="골다공증">
+        <label for="familyHistoryOsteoporosis">골다공증</label><br>
+        
+        <input type="checkbox" id="familyHistoryAsthma" name="familyHistory" value="천식">
+        <label for="familyHistoryAsthma">천식</label><br>
+        
+        <input type="checkbox" id="familyHistoryOther" name="familyHistory" value="기타">
+        <label for="familyHistoryOther">기타 질환</label><br>
+        
+        <input type="checkbox" id="familyHistoryNone" name="familyHistory" value="해당 없음">
+        <label for="familyHistoryNone">해당 없음</label><br>
+        
         <button type="button" onclick="completeStep(9)">다음</button>
     </form>
 </div>
+
 
 <!-- 질문 10 -->
 <div id="question10" class="survey-page" style="display:none;">
