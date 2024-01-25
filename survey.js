@@ -167,28 +167,28 @@ document.querySelectorAll('input[name="familyHistory"]:not(#familyHistoryNone)')
 
 function toggleHealthOptions() {
     const isChecked = document.getElementById('healthNone').checked;
-    document.getElementById('healthissue1').disabled = isChecked;
-    document.getElementById('healthissue2').disabled = isChecked;
-    document.getElementById('healthissue3').disabled = isChecked;
-    document.getElementById('healthissue4').disabled = isChecked;
-    document.getElementById('healthissue5').disabled = isChecked;
-    document.getElementById('healthissue6').disabled = isChecked;
-    document.getElementById('healthissue7').disabled = isChecked;
-    document.getElementById('healthissue8').disabled = isChecked;
-    document.getElementById('healthissue9').disabled = isChecked;
-    document.getElementById('healthissue10').disabled = isChecked;
+    document.getElementById('healthIssue1').disabled = isChecked;
+    document.getElementById('healthIssue2').disabled = isChecked;
+    document.getElementById('healthIssue3').disabled = isChecked;
+    document.getElementById('healthIssue4').disabled = isChecked;
+    document.getElementById('healthIssue5').disabled = isChecked;
+    document.getElementById('healthIssue6').disabled = isChecked;
+    document.getElementById('healthIssue7').disabled = isChecked;
+    document.getElementById('healthIssue8').disabled = isChecked;
+    document.getElementById('healthIssue9').disabled = isChecked;
+    document.getElementById('healthIssue10').disabled = isChecked;
 
     if (isChecked) {
-   document.getElementById('healthissue1').disabled = isChecked;
-    document.getElementById('healthissue2').disabled = isChecked;
-    document.getElementById('healthissue3').disabled = isChecked;
-    document.getElementById('healthissue4').disabled = isChecked;
-    document.getElementById('healthissue5').disabled = isChecked;
-    document.getElementById('healthissue6').disabled = isChecked;
-    document.getElementById('healthissue7').disabled = isChecked;
-    document.getElementById('healthissue8').disabled = isChecked;
-    document.getElementById('healthissue9').disabled = isChecked;
-    document.getElementById('healthissue10').disabled = isChecked;
+   document.getElementById('healthIssue1').disabled = isChecked;
+    document.getElementById('healthIssue2').disabled = isChecked;
+    document.getElementById('healthIssue3').disabled = isChecked;
+    document.getElementById('healthIssue4').disabled = isChecked;
+    document.getElementById('healthIssue5').disabled = isChecked;
+    document.getElementById('healthIssue6').disabled = isChecked;
+    document.getElementById('healthIssue7').disabled = isChecked;
+    document.getElementById('healthIssue8').disabled = isChecked;
+    document.getElementById('healthIssue9').disabled = isChecked;
+    document.getElementById('healthIssue10').disabled = isChecked;
     }
 }
 
