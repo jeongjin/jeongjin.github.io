@@ -114,3 +114,20 @@ function updateProgressBar(currentStep, totalSteps) {
     progressBar.style.width = widthPercentage + '%';
     progressText.textContent = `${currentStep} / ${totalSteps}`;
 }
+
+
+function uncheckNone(checkbox) {
+    if (checkbox.checked) {
+        document.getElementById('none').checked = false;
+    }
+}
+
+function uncheckOthers(checkbox) {
+    if (checkbox.checked) {
+        document.getElementById('smoking').checked = false;
+        document.getElementById('drinking').checked = false;
+        document.getElementById('lack_of_exercise').checked = false;
+        document.getElementById('lack_of_sunlight').checked = false;
+    }
+}
+
