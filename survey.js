@@ -147,18 +147,22 @@ function handleDietHabitChange(selectedCheckboxId) {
 }
 
 
-document.getElementById('form9').addEventListener('change', function(e) {
-    const isNoneSelected = document.getElementById('familyHistoryNone').checked;
-    const checkboxes = document.querySelectorAll('.familyHistory');
-
-    if (e.target.id === 'familyHistoryNone') {
-        checkboxes.forEach(cb => {
-            if (cb.id !== 'familyHistoryNone') cb.checked = false;
+document.getElementById("familyHistoryNone").addEventListener("change", function() {
+    if(this.checked) {
+        document.querySelectorAll('input[name="familyHistory"]:not(#familyHistoryNone)').forEach(function(item) {
+            item.checked = false;
         });
-    } else if (isNoneSelected) {
-        document.getElementById('familyHistoryNone').checked = false;
     }
 });
+
+document.querySelectorAll('input[name="familyHistory"]:not(#familyHistoryNone)').forEach(function(item) {
+    item.addEventListener("change", function() {
+        if(this.checked) {
+            document.getElementById("familyHistoryNone").checked = false;
+        }
+    });
+});
+
 
 
 function toggleHealthOptions() {
