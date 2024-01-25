@@ -1,0 +1,138 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header h1 {
+    color: #333; /* 제목의 색상 */
+    text-align: center; /* 가운데 정렬 */
+    font-size: 24px; /* 폰트 크기 */
+    padding: 20px 0; /* 상하 패딩 */
+    margin: 0; /* 마진 제거 */
+    /* 여기에 추가적인 스타일링을 적용할 수 있습니다 */
+}
+
+#surveyContainer {
+    position: relative; /* 상대 위치 설정 */
+    /* 기타 컨테이너 스타일 */
+}
+
+.survey-header {
+    position: absolute; /* 절대 위치 설정 */
+    top: 0; /* 컨테이너의 맨 위 */
+    left: 50%; /* 좌우 중앙 정렬을 위해 왼쪽에서 50% 떨어진 곳에 위치 */
+    transform: translateX(-50%); /* 요소의 중앙을 왼쪽 50% 지점에 맞춤 */
+    width: 100%; /* 너비를 컨테이너에 맞춤 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    padding: 10px 0; /* 상하 패딩 */
+    background: #fff; /* 배경색 지정 */
+    /* 기타 헤더 스타일 */
+}
+
+#surveyContainer {
+    width: 100%;
+    max-width: 400px; /* 스마트폰 화면의 폭 */
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 10px; /* 스마트폰 화면의 모서리를 둥글게 */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* 그림자 효과 */
+    overflow: hidden;
+    background: #fff;
+}
+
+.survey-page {
+    padding: 20px;
+    text-align: center;
+}
+
+
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #3498db;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block; /* 버튼을 블록 요소로 만들어 가운데 정렬 */
+    width: 50%; /* 버튼의 너비 */
+    margin-left: auto; /* 왼쪽 마진 자동 */
+    margin-right: auto; /* 오른쪽 마진 자동 */
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* 박스 크기 계산 방식을 변경 */
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+.progress-bar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FFC0CB; /* 배경색을 원하는 색상으로 설정 */
+    padding: 5px 20px; /* 프로그레스 바 주변의 패딩 */
+    font-family: 'Your Font', sans-serif; /* 원하는 폰트로 변경 */
+    color: white; /* 텍스트 색상 */
+}
+
+.progress-bar {
+    width: 80%; /* 프로그레스 바의 전체 너비 */
+    background-color: #fff; /* 프로그레스 바 배경색 */
+    border-radius: 10px; /* 프로그레스 바 모서리 둥글기 */
+    overflow: hidden; /* 내부 요소가 넘쳐흐르지 않도록 설정 */
+}
+
+.progress {
+    width: 0%; /* 초기 진행률 */
+    height: 20px; /* 프로그레스 바 높이 */
+    background-color: #3498db; /* 프로그레스 바 색상 */
+    transition: width 0.4s ease; /* 너비 변경에 애니메이션 적용 */
+}
+
+.progress-text {
+    margin-left: 20px; /* 프로그레스 바와 텍스트 사이의 간격 */
+    font-size: 0.9em; /* 텍스트 크기 */
+}
+
+.survey-page {
+    width: 300px; /* 원하는 너비로 설정 */
+    margin: auto; /* 가운데 정렬 */
+}
+
+@media (max-width: 768px) {
+    #surveyContainer {
+        width: 95%;
+        margin: 20px;
+        border-radius: 10px;
+    }
+
+    button {
+        width: 70%;
+    }
+}
