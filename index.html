@@ -181,19 +181,43 @@
 <div id="question10" class="survey-page" style="display:none;">
     <h2>질문 10: 건강 상태 관련 사항을 알려주세요. (중복선택 가능)</h2>
     <form id="form10">
-        <!-- 건강 상태 관련 체크박스 추가 -->
- <input type="checkbox" id="option1" name="option1" value="스트레스">
-        <label for="option1">스트레스</label><br>
+        <input type="checkbox" id="healthIssue1" name="healthIssue" value="스트레스">
+        <label for="healthIssue1">스트레스</label><br>
         
-        <input type="checkbox" id="option2" name="option2" value="불면증">
-        <label for="option2">불면증</label><br>
+        <input type="checkbox" id="healthIssue2" name="healthIssue" value="불면증">
+        <label for="healthIssue2">불면증</label><br>
         
-        <input type="checkbox" id="option3" name="option3" value="우울증">
-        <label for="option3">우울증</label><br>
-        
+        <input type="checkbox" id="healthIssue3" name="healthIssue" value="우울증">
+        <label for="healthIssue3">우울증</label><br>
+
+        <input type="checkbox" id="healthIssue4" name="healthIssue" value="체중 증가">
+        <label for="healthIssue4">체중 증가</label><br>
+
+        <input type="checkbox" id="healthIssue5" name="healthIssue" value="체중 감소">
+        <label for="healthIssue5">체중 감소</label><br>
+
+        <input type="checkbox" id="healthIssue6" name="healthIssue" value="피로">
+        <label for="healthIssue6">피로</label><br>
+
+        <input type="checkbox" id="healthIssue7" name="healthIssue" value="두통">
+        <label for="healthIssue7">두통</label><br>
+
+        <input type="checkbox" id="healthIssue8" name="healthIssue" value="소화 불량">
+        <label for="healthIssue8">소화 불량</label><br>
+
+        <input type="checkbox" id="healthIssue9" name="healthIssue" value="면역력 저하">
+        <label for="healthIssue9">면역력 저하</label><br>
+
+        <input type="checkbox" id="healthIssue10" name="healthIssue" value="근육통">
+        <label for="healthIssue10">근육통</label><br>
+
+        <input type="checkbox" id="healthNone" name="health" value="해당 없음" onclick="toggleHealthOptions()">
+        <label for="healthNone">해당 없음</label><br>
+
         <button type="button" onclick="completeStep(10)">다음</button>
     </form>
 </div>
+
 
 <!-- 질문 11 -->
 <div id="question11" class="survey-page" style="display:none;">
