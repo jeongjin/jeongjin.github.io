@@ -95,6 +95,7 @@ label {
     vertical-align: top; /* 라벨을 상단 정렬로 변경 */
 }
 
+
 .progress-bar-container {
     display: flex;
     align-items: center;
