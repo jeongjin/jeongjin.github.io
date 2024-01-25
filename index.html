@@ -67,17 +67,25 @@
 <div id="question5" class="survey-page" style="display:none;">
     <h2>질문 5: 아래에 생활습관에 해당하는 사항이 있는지 알려주세요. (중복선택 가능)</h2>
     <form id="form5">
-        <input type="checkbox" id="option1" name="option1" value="흡연">
-        <label for="option1">흡연</label><br>
+        <input type="checkbox" id="smoking" name="lifestyle" value="흡연" onclick="uncheckNone(this)">
+        <label for="smoking">흡연을 하고 있어요. (전자담배 포함)</label><br>
         
-        <input type="checkbox" id="option2" name="option2" value="음주">
-        <label for="option2">음주</label><br>
+        <input type="checkbox" id="drinking" name="lifestyle" value="음주" onclick="uncheckNone(this)">
+        <label for="drinking">술을 일주일에 3회(2일에 1회, 2잔 이상) 이상 마셔요.</label><br>
         
-        <input type="checkbox" id="option3" name="option3" value="운동 부족">
-        <label for="option3">운동 부족</label><br>
+        <input type="checkbox" id="lack_of_exercise" name="lifestyle" value="운동부족" onclick="uncheckNone(this)">
+        <label for="lack_of_exercise">평소 규칙적으로 하는 운동은 거의 없으며, 가끔 운동을 하더라도 20분을 넘지 않은 경우가 많아요.</label><br>
+        
+        <input type="checkbox" id="lack_of_sunlight" name="lifestyle" value="햇볕부족" onclick="uncheckNone(this)">
+        <label for="lack_of_sunlight">하루에 햇볕을 쬐는 시간이 30분 이내예요.</label><br>
+
+        <input type="checkbox" id="none" name="lifestyle" value="해당없음" onclick="uncheckOthers(this)">
+        <label for="none">해당 없음</label><br>
+        
         <button type="button" onclick="completeStep(5)">다음</button>
     </form>
 </div>
+
 
 <!-- 질문 6 -->
 <div id="question6" class="survey-page" style="display:none;">
