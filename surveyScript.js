@@ -155,8 +155,15 @@ function completeStep14() {
 function completeStep15() {
     var budget = document.querySelector('input[name="budget"]:checked').value;
     userData['budget'] = budget;
+    console.log(userData); // 사용자 데이터 콘솔에 출력 (디버깅 목적)
+    saveUserData(); // 사용자 데이터 저장
+}
 
-    // 모든 데이터를 로컬 데이터에 저장한 후, 원하는 작업 수행
-    // 예를 들어, 저장된 데이터를 서버로 전송하거나 화면에 출력하는 등의 작업을 수행할 수 있습니다.
-    console.log(userData);
+
+
+
+function saveUserData() {
+    localStorage.setItem('userData', JSON.stringify(userData));
+    alert('설문이 제출되었습니다. 감사합니다!');
+    window.location.href = 'survey_Results.html'; // 결과 페이지로 리디렉션
 }

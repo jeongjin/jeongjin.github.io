@@ -15,11 +15,11 @@
 
  <div class="survey-header">
             <h1>Helsner 건강 설문</h1>
-        </div>  
-        <!-- 설문 컨테이너 -->
-    <div id="surveyContainer">
+ </div>  
+ <!-- 설문 컨테이너 -->
+ <div id="surveyContainer">
      
-<div class="progress-bar-container">
+ <div class="progress-bar-container">
     <div class="progress-bar" id="progress-bar">
         <div class="progress" id="progress"></div>
     </div>
@@ -33,7 +33,7 @@
                 <label for="genderMale">남성</label><br>
                 <input type="radio" id="genderFemale" name="gender" value="female">
                 <label for="genderFemale">여성</label><br>
-                <button type="button" onclick="completeStep(1)">다음</button>
+                <button type="button" onclick="completeStep1()">다음</button>
             </form>
         </div>
         <!-- 질문 2 -->
@@ -41,7 +41,7 @@
     <h2>질문 2: 출생년도를 알려주세요.</h2>
     <form id="form2">
         <input type="date" id="birthYear" name="birthYear"><br>
-        <button type="button" onclick="completeStep(2)">다음</button>
+        <button type="button" onclick="completeStep2()">다음</button>
     </form>
 </div>
 
@@ -50,7 +50,7 @@
     <h2>질문 3: 키를 알려주세요.</h2>
     <form id="form3">
         <input type="number" id="height" name="height"><br>
-        <button type="button" onclick="completeStep(3)">다음</button>
+        <button type="button" onclick="completeStep3()">다음</button>
     </form>
 </div>
 
@@ -59,7 +59,7 @@
     <h2>질문 4: 몸무게를 알려주세요.</h2>
     <form id="form4">
         <input type="number" id="weight" name="weight"><br>
-        <button type="button" onclick="completeStep(4)">다음</button>
+        <button type="button" onclick="completeStep4()">다음</button>
     </form>
 </div>
 
@@ -79,10 +79,11 @@
         <input type="checkbox" id="lack_of_sunlight" name="lifestyle" value="햇볕부족" onclick="uncheckNone(this)">
         <label for="lack_of_sunlight">하루에 햇볕을 쬐는 시간이 30분 이내예요.</label><br>
 
+        <!-- '해당 없음' 체크박스 추가 -->
         <input type="checkbox" id="none" name="lifestyle" value="해당없음" onclick="uncheckOthers(this)">
         <label for="none">해당 없음</label><br>
         
-        <button type="button" onclick="completeStep(5)">다음</button>
+        <button type="button" onclick="completeStep5()">다음</button>
     </form>
 </div>
 
@@ -91,31 +92,31 @@
 <div id="question6" class="survey-page" style="display:none;">
     <h2>질문 6: 식습관에 대해 알려주세요. (중복선택 가능)</h2>
     <form id="form6">
-        <input type="checkbox" id="dietHighCarb" name="dietHabit" value="탄수화물이 많은 음식" onclick="handleDietHabitChange('dietHighCarb')">
+        <input type="checkbox" id="dietHighCarb" name="dietHabit" value="탄수화물이 많은 음식" onclick="uncheckNone(this)" >
         <label for="dietHighCarb">탄수화물이 많은 음식을 자주 먹어요. (빵, 과자, 면 등)</label><br>
 
-        <input type="checkbox" id="dietHighMeat" name="dietHabit" value="고기를 자주 먹어요" onclick="handleDietHabitChange('dietHighMeat')">
+        <input type="checkbox" id="dietHighMeat" name="dietHabit" value="고기를 자주 먹어요" onclick="uncheckNone(this)" >
         <label for="dietHighMeat">고기를 자주 먹어요.</label><br>
 
-        <input type="checkbox" id="dietHighFat" name="dietHabit" value="기름진 음식" onclick="handleDietHabitChange('dietHighFat')">
+        <input type="checkbox" id="dietHighFat" name="dietHabit" value="기름진 음식" onclick="uncheckNone(this)" >
         <label for="dietHighFat">기름진 음식, 튀긴 음식을 자주 먹어요.</label><br>
 
-        <input type="checkbox" id="dietHighCaffeine" name="dietHabit" value="카페인 음료" onclick="handleDietHabitChange('dietHighCaffeine')">
+        <input type="checkbox" id="dietHighCaffeine" name="dietHabit" value="카페인 음료" onclick="uncheckNone(this)">
         <label for="dietHighCaffeine">커피, 차 등 카페인 함유 음료 또는 탄산음료를 하루 3잔 이상 마셔요.</label><br>
 
-        <input type="checkbox" id="dietOvereating" name="dietHabit" value="과식" onclick="handleDietHabitChange('dietOvereating')">
+        <input type="checkbox" id="dietOvereating" name="dietHabit" value="과식" onclick="uncheckNone(this)" >
         <label for="dietOvereating">과식을 자주 하고, 외식이나 배달음식을 주로 먹어요.</label><br>
 
-        <input type="checkbox" id="dietLowFish" name="dietHabit" value="생선 적게 먹음" onclick="handleDietHabitChange('dietLowFish')">
+        <input type="checkbox" id="dietLowFish" name="dietHabit" value="생선 적게 먹음" onclick="uncheckNone(this)">
         <label for="dietLowFish">등푸른 생선을 먹는 횟수가 주 2회보다 적어요.</label><br>
 
-        <input type="checkbox" id="dietLowVeggies" name="dietHabit" value="채소류 적게 먹음" onclick="handleDietHabitChange('dietLowVeggies')">
+        <input type="checkbox" id="dietLowVeggies" name="dietHabit" value="채소류 적게 먹음" onclick="uncheckNone(this)" >
         <label for="dietLowVeggies">채소류, 해조류, 콩, 달걀 등을 잘 먹지 않아요.</label><br>
 
-        <input type="checkbox" id="dietNone" name="dietHabit" value="해당 없음" onclick="handleDietHabitChange('dietNone')">
+        <input type="checkbox" id="dietNone" name="dietHabit" value="해당 없음"  onclick="uncheckOthers(this)">
         <label for="dietNone">해당 없음</label><br>
 
-        <button type="button" onclick="completeStep(6)">다음</button>
+        <button type="button" onclick="completeStep6()">다음</button>
     </form>
 </div>
 
@@ -125,7 +126,7 @@
     <h2>질문 7: 과거에 앓았거나 현재 앓고 있는 질환을 알려주세요. (직접 입력)</h2>
     <form id="form7">
         <input type="text" id="disease" name="disease"><br>
-        <button type="button" onclick="completeStep(7)">다음</button>
+        <button type="button" onclick="completeStep7()">다음</button>
     </form>
 </div>
 
@@ -134,7 +135,7 @@
     <h2>질문 8: 복용 중인 의약품을 알려주세요. (직접 입력)</h2>
     <form id="form8">
         <input type="text" id="medicine" name="medicine"><br>
-        <button type="button" onclick="completeStep(8)">다음</button>
+        <button type="button" onclick="completeStep8()">다음</button>
     </form>
 </div>
 
@@ -142,37 +143,37 @@
 <div id="question9" class="survey-page" style="display:none;">
     <h2>질문 9: 가족력이 있는 질환을 알려주세요. (중복선택 가능)</h2>
     <form id="form9">
-        <input type="checkbox" id="familyHistoryDiabetes" name="familyHistory" value="당뇨병">
+        <input type="checkbox" id="familyHistoryDiabetes" name="familyHistory" value="당뇨병" onclick="uncheckNone(this)">
         <label for="familyHistoryDiabetes">당뇨병</label><br>
         
-        <input type="checkbox" id="familyHistoryHypertension" name="familyHistory" value="고혈압">
+        <input type="checkbox" id="familyHistoryHypertension" name="familyHistory" value="고혈압" onclick="uncheckNone(this)">
         <label for="familyHistoryHypertension">고혈압</label><br>
         
-        <input type="checkbox" id="familyHistoryCancer" name="familyHistory" value="암">
+        <input type="checkbox" id="familyHistoryCancer" name="familyHistory" value="암" onclick="uncheckNone(this)">
         <label for="familyHistoryCancer">암</label><br>
         
-        <input type="checkbox" id="familyHistoryHeartDisease" name="familyHistory" value="심장 질환">
+        <input type="checkbox" id="familyHistoryHeartDisease" name="familyHistory" value="심장 질환" onclick="uncheckNone(this)">
         <label for="familyHistoryHeartDisease">심장 질환</label><br>
         
-        <input type="checkbox" id="familyHistoryStroke" name="familyHistory" value="뇌졸중">
+        <input type="checkbox" id="familyHistoryStroke" name="familyHistory" value="뇌졸중" onclick="uncheckNone(this)">
         <label for="familyHistoryStroke">뇌졸중</label><br>
         
-        <input type="checkbox" id="familyHistoryArthritis" name="familyHistory" value="관절염">
+        <input type="checkbox" id="familyHistoryArthritis" name="familyHistory" value="관절염" onclick="uncheckNone(this)">
         <label for="familyHistoryArthritis">관절염</label><br>
         
-        <input type="checkbox" id="familyHistoryOsteoporosis" name="familyHistory" value="골다공증">
+        <input type="checkbox" id="familyHistoryOsteoporosis" name="familyHistory" value="골다공증" onclick="uncheckNone(this)">
         <label for="familyHistoryOsteoporosis">골다공증</label><br>
         
-        <input type="checkbox" id="familyHistoryAsthma" name="familyHistory" value="천식">
+        <input type="checkbox" id="familyHistoryAsthma" name="familyHistory" value="천식" onclick="uncheckNone(this)">
         <label for="familyHistoryAsthma">천식</label><br>
         
-        <input type="checkbox" id="familyHistoryOther" name="familyHistory" value="기타">
+        <input type="checkbox" id="familyHistoryOther" name="familyHistory" value="기타" onclick="uncheckNone(this)">
         <label for="familyHistoryOther">기타 질환</label><br>
         
-        <input type="checkbox" id="familyHistoryNone" name="familyHistory" value="해당 없음">
+        <input type="checkbox" id="familyHistoryNone" name="familyHistory" value="해당 없음" onclick="uncheckOthers(this)">
         <label for="familyHistoryNone">해당 없음</label><br>
         
-        <button type="button" onclick="completeStep(9)">다음</button>
+        <button type="button" onclick="completeStep9()">다음</button>
     </form>
 </div>
 
@@ -181,40 +182,40 @@
 <div id="question10" class="survey-page" style="display:none;">
     <h2>질문 10: 건강 상태 관련 사항을 알려주세요. (중복선택 가능)</h2>
     <form id="form10">
-        <input type="checkbox" id="healthIssue1" name="healthIssue" value="스트레스">
+        <input type="checkbox" id="healthIssue1" name="healthIssue" value="스트레스" onclick="uncheckNone(this)">
         <label for="healthIssue1">스트레스</label><br>
         
-        <input type="checkbox" id="healthIssue2" name="healthIssue" value="불면증">
+        <input type="checkbox" id="healthIssue2" name="healthIssue" value="불면증" onclick="uncheckNone(this)">
         <label for="healthIssue2">불면증</label><br>
         
-        <input type="checkbox" id="healthIssue3" name="healthIssue" value="우울증">
+        <input type="checkbox" id="healthIssue3" name="healthIssue" value="우울증" onclick="uncheckNone(this)">
         <label for="healthIssue3">우울증</label><br>
 
-        <input type="checkbox" id="healthIssue4" name="healthIssue" value="체중 증가">
+        <input type="checkbox" id="healthIssue4" name="healthIssue" value="체중 증가" onclick="uncheckNone(this)">
         <label for="healthIssue4">체중 증가</label><br>
 
-        <input type="checkbox" id="healthIssue5" name="healthIssue" value="체중 감소">
+        <input type="checkbox" id="healthIssue5" name="healthIssue" value="체중 감소" onclick="uncheckNone(this)">
         <label for="healthIssue5">체중 감소</label><br>
 
-        <input type="checkbox" id="healthIssue6" name="healthIssue" value="피로">
+        <input type="checkbox" id="healthIssue6" name="healthIssue" value="피로" onclick="uncheckNone(this)">
         <label for="healthIssue6">피로</label><br>
 
-        <input type="checkbox" id="healthIssue7" name="healthIssue" value="두통">
+        <input type="checkbox" id="healthIssue7" name="healthIssue" value="두통" onclick="uncheckNone(this)">
         <label for="healthIssue7">두통</label><br>
 
-        <input type="checkbox" id="healthIssue8" name="healthIssue" value="소화 불량">
+        <input type="checkbox" id="healthIssue8" name="healthIssue" value="소화 불량" onclick="uncheckNone(this)">
         <label for="healthIssue8">소화 불량</label><br>
 
-        <input type="checkbox" id="healthIssue9" name="healthIssue" value="면역력 저하">
+        <input type="checkbox" id="healthIssue9" name="healthIssue" value="면역력 저하" onclick="uncheckNone(this)">
         <label for="healthIssue9">면역력 저하</label><br>
 
-        <input type="checkbox" id="healthIssue10" name="healthIssue" value="근육통">
+        <input type="checkbox" id="healthIssue10" name="healthIssue" value="근육통" onclick="uncheckNone(this)">
         <label for="healthIssue10">근육통</label><br>
 
-        <input type="checkbox" id="healthNone" name="health" value="해당 없음" onclick="toggleHealthOptions()">
+        <input type="checkbox" id="healthNone" name="healthIssue" value="해당 없음"  onclick="uncheckOthers(this)">
         <label for="healthNone">해당 없음</label><br>
 
-        <button type="button" onclick="completeStep(10)">다음</button>
+        <button type="button" onclick="completeStep10()">다음</button>
     </form>
 </div>
 
@@ -224,7 +225,7 @@
     <h2>질문 11: 현재 섭취 중인 건강기능식품을 알려주세요. (직접 입력)</h2>
     <form id="form11">
         <input type="text" id="supplement" name="supplement"><br>
-        <button type="button" onclick="completeStep(11)">다음</button>
+        <button type="button" onclick="completeStep11()">다음</button>
     </form>
 </div>
 
@@ -233,7 +234,7 @@
     <h2>질문 12: 알러지가 있다면 알려주세요. (직접 입력)</h2>
     <form id="form12">
         <input type="text" id="allergy" name="allergy"><br>
-        <button type="button" onclick="completeStep(12)">다음</button>
+        <button type="button" onclick="completeStep12()">다음</button>
     </form>
 </div>
 
@@ -242,12 +243,18 @@
     <h2>질문 13: 여성 건강 사항을 알려주세요.</h2>
     <form id="form13">
         <!-- 여성 건강 사항 관련 체크박스 추가 -->
- <input type="radio" id="option1" name="option" value="임신">
+    <input type="radio" id="option1" name="option" value="임신" onclick="uncheckNone(this)">
         <label for="option1">임신</label><br>
         
-        <input type="radio" id="option2" name="option" value="피임">
-        <label for="option2">피임</label><br>
-        <button type="button" onclick="completeStep(13)">다음</button>
+    <input type="radio" id="option2" name="option" value="수유 중" onclick="uncheckNone(this)">
+        <label for="option2">수유 중</label><br>
+    <input type="radio" id="option3" name="option" value="6개월 내 자녀 계획" onclick="uncheckNone(this)">
+        <label for="option3">6개월 내 자녀 계획</label><br>
+    <input type="radio" id="option4" name="option" value="폐경기" onclick="uncheckNone(this)">
+        <label for="option4">폐경기</label><br>
+    <input type="radio" id="option5" name="option" value="해당 없음" onclick="uncheckOthers(this)">
+        <label for="option5">해당 없음</label><br>
+        <button type="button" onclick="completeStep13()">다음</button>
     </form>
 </div>
 
@@ -264,7 +271,7 @@
         
         <input type="checkbox" id="option3" name="option3" value="영양제 섭취">
         <label for="option3">영양제 섭취</label><br>
-        <button type="button" onclick="completeStep(14)">다음</button>
+        <button type="button" onclick="completeStep14()">다음</button>
     </form>
 </div>
 
@@ -279,7 +286,7 @@
                 <label for="budgetC">별다방 (하루 약 4500원)</label><br>
                 <input type="radio" id="budgetD" name="budget" value="D">
                 <label for="budgetD">건강을 위해서라면 금액 상관없이</label><br>
-                <button type="button" onclick="submitSurvey()">제출</button>
+                <button type="button" id="submitSurvey" >제출</button>
             </form>
         </div>
     </div>

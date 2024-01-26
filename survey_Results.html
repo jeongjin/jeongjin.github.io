@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설문 결과</title>
+    <!-- 스타일 시트 (styles.css)를 불러옵니다 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 설문 결과 페이지 내용 -->
+    <div class="survey-header">
+        <h1>설문 결과</h1>
+    </div>
+
+    <!-- 설문 결과를 담는 컨테이너 -->
+    <div id="surveyResults" class="survey-page">
+        <!-- 질문 1: 성별 결과 -->
+        <div class="result-item">
+            <h2>성별</h2>
+            <p id="genderResult"></p>
+        </div>
+
+        <!-- 질문 2: 출생년도 결과 -->
+        <div class="result-item">
+            <h2>출생년도</h2>
+            <p id="birthYearResult"></p>
+        </div>
+
+        <!-- 질문 3: 키 결과 -->
+        <div class="result-item">
+            <h2>키</h2>
+            <p id="heightResult"></p>
+        </div>
+
+        <!-- 질문 4: 몸무게 결과 -->
+        <div class="result-item">
+            <h2>몸무게</h2>
+            <p id="weightResult"></p>
+        </div>
+
+        <!-- 질문 5: 생활습관 결과 -->
+        <div class="result-item">
+            <h2>생활습관</h2>
+            <p id="lifestyleResult"></p>
+        </div>
+
+        <!-- 질문 6: 식습관 결과 -->
+        <div class="result-item">
+            <h2>식습관</h2>
+            <p id="dietHabitResult"></p>
+        </div>
+
+        <!-- 질문 7: 과거 질환 결과 -->
+        <div class="result-item">
+            <h2>과거 질환</h2>
+            <p id="diseaseResult"></p>
+        </div>
+
+        <!-- 질문 8: 복용 중인 의약품 결과 -->
+        <div class="result-item">
+            <h2>복용 중인 의약품</h2>
+            <p id="medicineResult"></p>
+        </div>
+
+        <!-- 질문 9: 가족력 결과 -->
+        <div class="result-item">
+            <h2>가족력</h2>
+            <p id="familyHistoryResult"></p>
+        </div>
+
+        <!-- 질문 10: 건강 상태 관련 사항 결과 -->
+        <div class="result-item">
+            <h2>건강 상태 관련 사항</h2>
+            <p id="healthIssueResult"></p>
+        </div>
+
+        <!-- 질문 11: 건강기능식품 결과 -->
+        <div class="result-item">
+            <h2>건강기능식품</h2>
+            <p id="supplementResult"></p>
+        </div>
+
+        <!-- 질문 12: 알러지 결과 -->
+        <div class="result-item">
+            <h2>알러지</h2>
+            <p id="allergyResult"></p>
+        </div>
+
+        <!-- 질문 13: 여성 건강 사항 결과 -->
+        <div class="result-item">
+            <h2>여성 건강 사항</h2>
+            <p id="optionResult"></p>
+        </div>
+
+        <!-- 질문 14: 건강 관리 고민사항 결과 -->
+        <div class="result-item">
+            <h2>건강 관리 고민사항</h2>
+            <p id="healthOptionsResult"></p>
+        </div>
+
+        <!-- 질문 15: 건강관리 예산 결과 -->
+        <div class="result-item">
+            <h2>건강관리 예산</h2>
+            <p id="budgetResult"></p>
+        </div>
+
+    </div>
+
+    <!-- 설문 결과를 동적으로 채우는 JavaScript 스크립트 -->
+    <script src="surveyScript.js"></script>
+    <script>
+
+    window.onload = function() {
+        var userDataString = localStorage.getItem('userData');
+
+        if (userDataString) {
+            try {
+                var userData = JSON.parse(userDataString);
+                // 결과를 표시하는 로직
+            } catch (e) {
+                console.error('userData 파싱 오류:', e);
+                // 오류 처리 로직 (예: 사용자에게 알림 표시)
+            }
+        } else {
+            console.error('userData가 존재하지 않습니다.');
+            // userData가 없는 경우의 처리 로직 (예: 사용자에게 알림 표시)
+        }
+};
+       // 결과 페이지 로드 시 실행
+       window.onload = function() {
+            // 로컬 스토리지에서 userData 로드
+            var userData = JSON.parse(localStorage.getItem('userData'));
+
+            // 각 결과를 해당 ID의 요소에 표시
+            document.getElementById("genderResult").textContent = userData.gender || '미응답';
+            document.getElementById("birthYearResult").textContent = userData.birthYear || '미응답';
+            document.getElementById("heightResult").textContent = userData.height || '미응답';
+            document.getElementById("weightResult").textContent = userData.weight || '미응답';
+            document.getElementById("lifestyleResult").textContent = userData.lifestyle.join(", ") || '미응답';
+            document.getElementById("dietHabitResult").textContent = userData.dietHabit.join(", ") || '미응답';
+            document.getElementById("diseaseResult").textContent = userData.disease || '미응답';
+            document.getElementById("medicineResult").textContent = userData.medicine || '미응답';
+            document.getElementById("familyHistoryResult").textContent = userData.familyHistory.join(", ") || '미응답';
+            document.getElementById("healthIssueResult").textContent = userData.healthIssue.join(", ") || '미응답';
+            document.getElementById("supplementResult").textContent = userData.supplement || '미응답';
+            document.getElementById("allergyResult").textContent = userData.allergy || '미응답';
+            document.getElementById("optionResult").textContent = userData.option || '미응답';
+            document.getElementById("healthOptionsResult").textContent = userData.healthOptions.join(", ") || '미응답';
+            document.getElementById("budgetResult").textContent = userData.budget || '미응답';
+        };
+    </script>
+</body>
+</html>
