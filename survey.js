@@ -105,3 +105,26 @@ function handleDietHabitChange(selectedCheckboxId) {
         document.getElementById('dietNone').checked = false;
     }
 }
+
+document.getElementById('question5None').addEventListener('change', function() {
+    var otherOptions = document.querySelectorAll('input[name="question5"]:not(#question5None)');
+    if (this.checked) {
+        otherOptions.forEach(function(option) {
+            option.checked = false;
+            option.disabled = true;
+        });
+    } else {
+        otherOptions.forEach(function(option) {
+            option.disabled = false;
+        });
+    }
+});
+
+document.querySelectorAll('input[name="question5"]:not(#question5None)').forEach(function(option) {
+    option.addEventListener('change', function() {
+        if (this.checked) {
+            document.getElementById('question5None').checked = false;
+        }
+    });
+});
+
