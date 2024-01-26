@@ -19,22 +19,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    function goToNextStep(step) {
-        // 현재 단계의 설문 페이지를 숨깁니다.
+function goToNextStep(step) {
+    if (validateCurrentStep(step)) { // 현재 단계의 입력값을 검증하는 함수
         document.getElementById('question' + step).style.display = 'none';
-        
-        // 다음 단계로 currentStep을 증가시킵니다.
         currentStep++;
 
-        // 다음 단계가 총 단계 수를 초과하지 않는 경우에만 실행합니다.
         if (currentStep <= totalSteps) {
-            // 다음 단계의 설문 페이지를 표시합니다.
             document.getElementById('question' + currentStep).style.display = 'block';
         } else {
-            // 여기에서 설문 제출 로직을 구현할 수 있습니다.
-            alert('설문이 완료되었습니다!'); // 예시 메시지입니다.
+            alert('설문이 완료되었습니다!');
         }
+    } else {
+        alert('모든 필수 항목을 입력해주세요.');
     }
+}
+
+function validateCurrentStep(step) {
+    // 현재 단계(step)의 모든 필수 입력 필드를 확인하고 유효한지 검증하는 로직 구현
+    // 예: document.querySelectorAll('#question' + step + ' input[required]').forEach(...)
+    // 모든 필수 입력 필드가 채워졌다면 true 반환, 그렇지 않다면 false 반환
+}
+
 
     // 설문 제출 함수입니다.
     function submitSurvey() {
