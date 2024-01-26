@@ -129,24 +129,27 @@ function completeStep13() {
     document.getElementById('question14').style.display = 'block';
 }
 
-// 질문 14: 건강 관리 고민사항
+// 질문 14: 건강 관심사 사항
 function completeStep14() {
     var healthOptions = [];
-    var Healthoption1 = document.getElementById('Healthoption1').checked;
-    var Healthoption2 = document.getElementById('Healthoption2').checked;
-    var Healthoption3 = document.getElementById('Healthoption3').checked;
+    var checkboxes = document.querySelectorAll('input[name="healthOptions"]:checked');
 
-    if (Healthoption1) {
-        healthOptions.push('다이어트');
-    }
-    if (Healthoption2) {
-        healthOptions.push('운동 계획');
-    }
-    if (Healthoption3) {
-        healthOptions.push('영양제 섭취');
+    // 체크박스가 3개를 초과하여 선택되었을 경우 경고 창 표시 후 함수 종료
+    if (checkboxes.length > 3) {
+        alert('최대 3개까지만 선택 가능합니다.');
+        return; // 여기서 함수 실행을 중단
     }
 
-    userData['healthOptions'] = healthOptions;
-    // 다음 질문으로 이동
-    document.getElementById('question15').style.display = 'block';
+    // 선택된 체크박스의 값들을 healthOptions 배열에 추가
+    checkboxes.forEach(function(checkbox) {
+        healthOptions.push(checkbox.value);
+    });
+
+    // 체크박스의 개수가 3개 이하일 경우에만 15번 질문을 표시
+    if (checkboxes.length <= 3) {
+        document.getElementById('question15').style.display = 'block';
+    }
 }
+
+
+
