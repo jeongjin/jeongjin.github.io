@@ -57,29 +57,20 @@ function updateProgressBar(currentStep, totalSteps) {
 }
 
 function completeStep(currentStep) {
-    // 입력값 검증 (예제로 입력값이 있는지만 확인)
-    var inputs = document.querySelectorAll('#question' + currentStep + ' input');
-    var isValid = Array.from(inputs).every(input => {
-        if(input.type === 'checkbox' || input.type === 'radio') {
-            return document.querySelector('input[name="' + input.name + '"]:checked');
+    if (validateForm(currentStep)) {
+        // 입력값이 유효한 경우 다음 단계로 이동
+        var totalSteps = 15;
+        document.getElementById('question' + currentStep).style.display = 'none';
+        if (currentStep < totalSteps) {
+            document.getElementById('question' + (currentStep + 1)).style.display = 'block';
+            updateProgressBar(currentStep + 1, totalSteps);
+        } else {
+            // 마지막 단계에서는 설문 제출 처리
+            submitSurvey();
         }
-        return input.value.trim() !== '';
-    });
-
-    if (!isValid) {
-        alert('모든 필수 항목을 입력해주세요.');
-        return; // 유효하지 않은 경우 다음으로 넘어가지 않음
-    }
-
-    // 현재 단계의 설문을 숨기고 다음 단계의 설문을 표시
-    var totalSteps = 15; // 총 설문 단계 수
-    document.getElementById('question' + currentStep).style.display = 'none';
-    if (currentStep < totalSteps) {
-        document.getElementById('question' + (currentStep + 1)).style.display = 'block';
-        updateProgressBar(currentStep + 1, totalSteps);
     } else {
-        // 마지막 단계에서는 설문 제출 처리
-        submitSurvey();
+        // 입력값이 유효하지 않은 경우 경고 메시지 표시
+        alert('모든 필수 항목을 입력해주세요.');
     }
 }
 
@@ -95,15 +86,24 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // 폼의 입력값을 검증하는 함수
-function validateForm(form) {
-    // 필수 입력 필드를 검증하는 로직 구현
-    // 예시: 모든 입력 필드를 순회하면서 값이 있는지 확인
-    for (let input of form.querySelectorAll('input')) {
-        if (input.hasAttribute('required') && !input.value.trim()) {
-            return false; // 필수 입력 필드 중 값이 없는 항목이 있으면 false 반환
+function validateForm(currentStep) {
+    var isValid = true;
+    var form = document.getElementById('form' + currentStep);
+    var inputs = form.querySelectorAll('input');
+
+    inputs.forEach(input => {
+        if (input.type === 'checkbox' || input.type === 'radio') {
+            if (!document.querySelector('input[name="' + input.name + '"]:checked')) {
+                isValid = false; // 체크박스나 라디오 버튼이 체크되지 않은 경우
+            }
+        } else {
+            if (!input.value.trim()) {
+                isValid = false; // 텍스트 입력이 비어 있는 경우
+            }
         }
-    }
-    return true; // 모든 필수 입력 필드에 값이 있으면 true 반환
+    });
+
+    return isValid;
 }
 
 function updateProgressBar(currentStep, totalSteps) {
