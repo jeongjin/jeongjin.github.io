@@ -1,24 +1,61 @@
 body, html {
+    height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #ecf0f1;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* 세련된 폰트로 변경 */
+    background-color: #f4f4f4; /* 배경색 변경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#surveyContainer {
-    max-width: 80%;
-    margin: 2em auto;
-    padding: 2em;
-    background: #fff;
+#surveyResultsContainer {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding-top: 70px; /* 상단에 헤더 높이만큼 패딩 추가 */
+    border: 1px solid #e0e0e0; /* 테두리 색상 */
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 그림자 */
+    background: #ffffff; /* 배경색 */
     overflow: hidden;
+    position: relative; /* 상대적 위치 */
+    top: 20px; /* 헤더와의 간격 조정 */
+}
+
+
+.survey-page {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px; /* 열 간격 조정 */
+    padding: 20px;
+    text-align: left;
+}
+
+.survey-header {
+    position: fixed; /* 헤더를 상단에 고정 */
+    top: 0; /* 상단에 위치 */
+    left: 0; /* 왼쪽 가장자리에 위치 */
+    right: 0; /* 오른쪽 가장자리에 위치 */
+    z-index: 1000; /* 다른 요소보다 위에 표시 */
+    background: #007bff; /* 배경색 */
+    color: white; /* 텍스트 색상 */
+    text-align: center;
+    width: 100%; /* 전체 너비 */
+    padding: 20px 0; /* 상하 패딩 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+
+.survey-header h1 {
+    margin: 0;
+    font-size: 2em; /* 제목 폰트 크기 변경 */
 }
 
 .result-item {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column; /* 세로 방향 배열 */
+    align-items: flex-start; /* 좌측 정렬 */
     padding: 1em;
     margin-bottom: 1em;
     background-color: #f9f9f9;
@@ -29,62 +66,27 @@ body, html {
 .result-item h2 {
     font-size: 1em;
     color: #333;
-    flex: 1;
+    text-align: left; /* 제목 좌측 정렬 */
+    margin-bottom: 0.5em; /* 제목과 결과값 사이 간격 */
 }
 
 .result-item p {
     font-size: 0.9em;
     color: #666;
-    flex: 2;
-    text-align: right;
-    margin-left: 1em;
-}
-
-/* 스크롤바 스타일링 */
-#surveyContainer::-webkit-scrollbar {
-    width: 10px;
-}
-
-#surveyContainer::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-#surveyContainer::-webkit-scrollbar-thumb {
-    background: #888;
-}
-
-#surveyContainer::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
+    text-align: center; /* 결과값 중앙 정렬 */
+    flex: 1;
+}}
 
 @media (max-width: 768px) {
-    .result-item {
-        flex-direction: column;
-        align-items: flex-start;
+    .survey-page {
+        grid-template-columns: repeat(2, 1fr); /* 모바일 화면에서 열 개수 조정 */
     }
 
-    .result-item p {
-        text-align: left;
-        margin-top: 0.5em;
-    }
-
-    #surveyContainer {
-        max-width: 95%;
-        margin: 1em;
-        padding: 1em;
-    }
-}
-
-@media (max-width: 480px) {
-    body, html {
-        font-size: 14px;
-    }
-
-    #surveyContainer {
-        padding: 0.5em;
+    .survey-header h1 {
+        font-size: 1.5em; /* 모바일 화면에서 제목 폰트 크기 조정 */
     }
 
     .result-item {
-        padding: 0.5em;
+        padding: 0.5em; /* 모바일 화면에서 패딩 조정 */
     }
 }
