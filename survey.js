@@ -1,145 +1,100 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var currentStep = 1; // 현재 설문 단계를 저장하는 변수입니다.
-    var totalSteps = 15; // 전체 설문 단계의 수입니다.
-    
-    // 모든 폼에 대해 엔터키 제출을 방지하는 이벤트 리스너를 추가합니다.
+    var currentStep = 1;
+    var totalSteps = 15;
+
     document.querySelectorAll('form').forEach(function(form) {
         form.addEventListener('submit', function(event) {
-            event.preventDefault(); // 폼 제출 기본 이벤트를 방지합니다.
-            goToNextStep(currentStep); // 다음 단계로 이동하는 함수를 호출합니다.
+            event.preventDefault();
+            goToNextStep(currentStep);
         });
     });
 
-    // '다음' 버튼에 클릭 이벤트를 바인딩합니다.
     document.querySelectorAll('button').forEach(function(button) {
         button.addEventListener('click', function() {
             if (this.getAttribute('type') === 'button') {
-                goToNextStep(currentStep); // 다음 단계로 이동하는 함수를 호출합니다.
+                goToNextStep(currentStep);
             }
         });
     });
 
-function goToNextStep(step) {
-    if (validateCurrentStep(step)) { // 현재 단계의 입력값을 검증하는 함수
-        document.getElementById('question' + step).style.display = 'none';
-        currentStep++;
-
-        if (currentStep <= totalSteps) {
-            document.getElementById('question' + currentStep).style.display = 'block';
+    function goToNextStep(step) {
+        if (validateForm(currentStep)) {
+            document.getElementById('question' + currentStep).style.display = 'none';
+            currentStep++;
+            if (currentStep <= totalSteps) {
+                document.getElementById('question' + currentStep).style.display = 'block';
+                updateProgressBar(currentStep, totalSteps);
+            } else {
+                submitSurvey();
+            }
         } else {
-            alert('설문이 완료되었습니다!');
+            alert('모든 필수 항목을 입력해주세요.');
         }
-    } else {
-        alert('모든 필수 항목을 입력해주세요.');
     }
-}
 
-function validateCurrentStep(step) {
-    // 현재 단계(step)의 모든 필수 입력 필드를 확인하고 유효한지 검증하는 로직 구현
-    // 예: document.querySelectorAll('#question' + step + ' input[required]').forEach(...)
-    // 모든 필수 입력 필드가 채워졌다면 true 반환, 그렇지 않다면 false 반환
-}
+    function validateForm(currentStep) {
+        var isValid = true;
+        var form = document.getElementById('form' + currentStep);
+        var inputs = form.querySelectorAll('input');
 
+        inputs.forEach(input => {
+            if (input.type === 'checkbox' || input.type === 'radio') {
+                if (!document.querySelector('input[name="' + input.name + '"]:checked')) {
+                    isValid = false;
+                }
+            } else {
+                if (!input.value.trim()) {
+                    isValid = false;
+                }
+            }
+        });
 
-    // 설문 제출 함수입니다.
+        return isValid;
+    }
+
     function submitSurvey() {
-        // 여기에서 설문 제출에 관련된 로직을 구현합니다.
-        // 예를 들어, 서버에 데이터를 전송하거나 결과 페이지로 이동하는 등의 처리를 할 수 있습니다.
-        alert('설문이 제출되었습니다!');
+        alert('설문이 제출되었습니다. 감사합니다!');
     }
 
-    // 외부에서 submitSurvey 함수를 사용할 수 있도록 window 객체에 할당합니다.
     window.submitSurvey = submitSurvey;
-});
 
-function updateProgressBar(currentStep, totalSteps) {
-    var progressBar = document.getElementById('progress');
-    var progressText = document.getElementById('progress-text');
-    var widthPercentage = (currentStep / totalSteps) * 100;
+    function updateProgressBar(currentStep, totalSteps) {
+        var progressBar = document.getElementById('progress');
+        var progressText = document.getElementById('progress-text');
+        var widthPercentage = (currentStep / totalSteps) * 100;
 
-    progressBar.style.width = widthPercentage + '%';
-    progressText.textContent = currentStep + ' of ' + totalSteps;
-}
-
-function completeStep(currentStep) {
-    if (validateForm(currentStep)) {
-        // 입력값이 유효한 경우 다음 단계로 이동
-        var totalSteps = 15;
-        document.getElementById('question' + currentStep).style.display = 'none';
-        if (currentStep < totalSteps) {
-            document.getElementById('question' + (currentStep + 1)).style.display = 'block';
-            updateProgressBar(currentStep + 1, totalSteps);
-        } else {
-            // 마지막 단계에서는 설문 제출 처리
-            submitSurvey();
-        }
-    } else {
-        // 입력값이 유효하지 않은 경우 경고 메시지 표시
-        alert('모든 필수 항목을 입력해주세요.');
+        progressBar.style.width = widthPercentage + '%';
+        progressText.textContent = `${currentStep} / ${totalSteps}`;
     }
-}
 
-function submitSurvey() {
-    // 설문 제출 관련 코드
-    alert('설문이 제출되었습니다. 감사합니다!');
-    // 여기에 서버로 데이터를 보내는 코드를 추가할 수 있습니다.
-}
-
-// 페이지 로드 시 첫 번째 질문과 프로그레스바 초기화
-document.addEventListener('DOMContentLoaded', function() {
     updateProgressBar(1, 15);
 });
 
-// 폼의 입력값을 검증하는 함수
-function validateForm(currentStep) {
-    var isValid = true;
-    var form = document.getElementById('form' + currentStep);
-    var inputs = form.querySelectorAll('input');
+function toggleHealthOptions() {
+    const isChecked = document.getElementById('healthNone').checked;
+    const healthOptions = document.querySelectorAll('input[name="healthIssue"]');
 
-    inputs.forEach(input => {
-        if (input.type === 'checkbox' || input.type === 'radio') {
-            if (!document.querySelector('input[name="' + input.name + '"]:checked')) {
-                isValid = false; // 체크박스나 라디오 버튼이 체크되지 않은 경우
-            }
-        } else {
-            if (!input.value.trim()) {
-                isValid = false; // 텍스트 입력이 비어 있는 경우
-            }
-        }
+    healthOptions.forEach(option => {
+        option.disabled = isChecked;
     });
-
-    return isValid;
 }
 
-function updateProgressBar(currentStep, totalSteps) {
-    var progressBar = document.getElementById('progress');
-    var progressText = document.getElementById('progress-text');
-    var widthPercentage = (currentStep / totalSteps) * 100;
-    
-    progressBar.style.width = widthPercentage + '%';
-    progressText.textContent = `${currentStep} / ${totalSteps}`;
-}
+document.querySelectorAll('input[name="familyHistory"]:not(#familyHistoryNone)').forEach(function(item) {
+    item.addEventListener("change", function() {
+        document.getElementById("familyHistoryNone").checked = false;
+    });
+});
 
-
-function uncheckNone(checkbox) {
-    if (checkbox.checked) {
-        document.getElementById('none').checked = false;
+document.getElementById("familyHistoryNone").addEventListener("change", function() {
+    if(this.checked) {
+        document.querySelectorAll('input[name="familyHistory"]:not(#familyHistoryNone)').forEach(function(item) {
+            item.checked = false;
+        });
     }
-}
-
-function uncheckOthers(checkbox) {
-    if (checkbox.checked) {
-        document.getElementById('smoking').checked = false;
-        document.getElementById('drinking').checked = false;
-        document.getElementById('lack_of_exercise').checked = false;
-        document.getElementById('lack_of_sunlight').checked = false;
-    }
-}
-
+});
 
 function handleDietHabitChange(selectedCheckboxId) {
     var dietHabits = ['dietHighCarb', 'dietHighMeat', 'dietHighFat', 'dietHighCaffeine', 'dietOvereating', 'dietLowFish', 'dietLowVeggies', 'dietNone'];
-
     if (selectedCheckboxId === 'dietNone') {
         dietHabits.forEach(function(habit) {
             if (habit !== 'dietNone') {
@@ -150,51 +105,3 @@ function handleDietHabitChange(selectedCheckboxId) {
         document.getElementById('dietNone').checked = false;
     }
 }
-
-
-document.getElementById("familyHistoryNone").addEventListener("change", function() {
-    if(this.checked) {
-        document.querySelectorAll('input[name="familyHistory"]:not(#familyHistoryNone)').forEach(function(item) {
-            item.checked = false;
-        });
-    }
-});
-
-document.querySelectorAll('input[name="familyHistory"]:not(#familyHistoryNone)').forEach(function(item) {
-    item.addEventListener("change", function() {
-        if(this.checked) {
-            document.getElementById("familyHistoryNone").checked = false;
-        }
-    });
-});
-
-
-
-function toggleHealthOptions() {
-    const isChecked = document.getElementById('healthNone').checked;
-    document.getElementById('healthIssue1').disabled = isChecked;
-    document.getElementById('healthIssue2').disabled = isChecked;
-    document.getElementById('healthIssue3').disabled = isChecked;
-    document.getElementById('healthIssue4').disabled = isChecked;
-    document.getElementById('healthIssue5').disabled = isChecked;
-    document.getElementById('healthIssue6').disabled = isChecked;
-    document.getElementById('healthIssue7').disabled = isChecked;
-    document.getElementById('healthIssue8').disabled = isChecked;
-    document.getElementById('healthIssue9').disabled = isChecked;
-    document.getElementById('healthIssue10').disabled = isChecked;
-
-    if (isChecked) {
-   document.getElementById('healthIssue1').disabled = isChecked;
-    document.getElementById('healthIssue2').disabled = isChecked;
-    document.getElementById('healthIssue3').disabled = isChecked;
-    document.getElementById('healthIssue4').disabled = isChecked;
-    document.getElementById('healthIssue5').disabled = isChecked;
-    document.getElementById('healthIssue6').disabled = isChecked;
-    document.getElementById('healthIssue7').disabled = isChecked;
-    document.getElementById('healthIssue8').disabled = isChecked;
-    document.getElementById('healthIssue9').disabled = isChecked;
-    document.getElementById('healthIssue10').disabled = isChecked;
-    }
-}
-
-
