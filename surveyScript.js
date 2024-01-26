@@ -132,38 +132,21 @@ function completeStep13() {
 // 질문 14: 건강 관리 고민사항
 function completeStep14() {
     var healthOptions = [];
-    var option1 = document.getElementById('option1').checked;
-    var option2 = document.getElementById('option2').checked;
-    var option3 = document.getElementById('option3').checked;
+    var Healthoption1 = document.getElementById('Healthoption1').checked;
+    var Healthoption2 = document.getElementById('Healthoption2').checked;
+    var Healthoption3 = document.getElementById('Healthoption3').checked;
 
-    if (option1) {
+    if (Healthoption1) {
         healthOptions.push('다이어트');
     }
-    if (option2) {
+    if (Healthoption2) {
         healthOptions.push('운동 계획');
     }
-    if (option3) {
+    if (Healthoption3) {
         healthOptions.push('영양제 섭취');
     }
 
     userData['healthOptions'] = healthOptions;
     // 다음 질문으로 이동
     document.getElementById('question15').style.display = 'block';
-}
-
-// 질문 15: 건강관리 예산
-function completeStep15() {
-    var budget = document.querySelector('input[name="budget"]:checked').value;
-    userData['budget'] = budget;
-    console.log(userData); // 사용자 데이터 콘솔에 출력 (디버깅 목적)
-    saveUserData(); // 사용자 데이터 저장
-}
-
-
-
-
-function saveUserData() {
-    localStorage.setItem('userData', JSON.stringify(userData));
-    alert('설문이 제출되었습니다. 감사합니다!');
-    window.location.href = 'survey_Results.html'; // 결과 페이지로 리디렉션
 }

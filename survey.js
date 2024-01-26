@@ -136,15 +136,24 @@ function setupNoneCheckboxInteractions() {
 // '해당 없음' 체크박스 관련 함수를 호출합니다.
 setupNoneCheckboxInteractions();
 
-// 설문 제출 버튼 클릭 이벤트 핸들러
+
 document.getElementById('submitSurvey').addEventListener('click', function() {
-    // userData 객체에 설문 데이터 저장 (가정)
-    alert('설문이 제출되었습니다. 감사합니다!');
+    // 선택된 budget 라디오 버튼의 값을 가져옵니다.
+    var selectedBudget = document.querySelector('input[name="budget"]:checked');
+    
+    // 선택된 값이 있는 경우에만 userData 객체에 저장합니다.
+    if (selectedBudget) {
+        userData['budget'] = selectedBudget.value;
+    } else {
+        // 선택된 값이 없는 경우, 사용자에게 알림을 표시합니다.
+        alert('예산을 선택해주세요.');
+        return; // 함수 실행을 중단합니다.
+    }
 
     // 로컬 스토리지에 userData 저장
     localStorage.setItem('userData', JSON.stringify(userData));
-
+    alert('설문이 제출되었습니다. 감사합니다!');
+    
     // 결과 페이지로 이동
     window.location.href = 'survey_Results.html';
 });
-

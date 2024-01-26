@@ -263,31 +263,31 @@
     <h2>질문 14: 건강 관리에 대한 고민사항을 알려주세요. (최대 3개 선택)</h2>
     <form id="form14">
         <!-- 건강 관리 고민사항 관련 체크박스 추가 -->
- <input type="checkbox" id="option1" name="option1" value="다이어트">
-        <label for="option1">다이어트</label><br>
+ <input type="checkbox" id="Healthoption1" name="healthOptions" value="다이어트">
+        <label for="Healthoption1">다이어트</label><br>
         
-        <input type="checkbox" id="option2" name="option2" value="운동 계획">
-        <label for="option2">운동 계획</label><br>
+        <input type="checkbox" id="Healthoption2" name="healthOptions" value="운동 계획">
+        <label for="Healthoption2">운동 계획</label><br>
         
-        <input type="checkbox" id="option3" name="option3" value="영양제 섭취">
-        <label for="option3">영양제 섭취</label><br>
+        <input type="checkbox" id="Healthoption3" name="healthOptions" value="영양제 섭취">
+        <label for="Healthoption3">영양제 섭취</label><br>
         <button type="button" onclick="completeStep14()">다음</button>
     </form>
 </div>
 
-        <div id="question15" class="survey-page" style="display:none;">
-            <h2>질문 15: 건강관리를 위해 얼마나 투자하실 수 있나요? (아메리카노 1잔 기준)</h2>
-            <form id="form15">
-                <input type="radio" id="budgetA" name="budget" value="A">
+<div id="question15" class="survey-page" style="display:none;">
+    <h2>질문 15: 건강관리를 위해 얼마나 투자하실 수 있나요? (아메리카노 1잔 기준)</h2>
+        <form id="form15">
+            <input type="radio" id="budgetA" name="budget" value="1,500원">
                 <label for="budgetA">B커피 (하루 약 1500원)</label><br>
-                <input type="radio" id="budgetB" name="budget" value="B">
+                <input type="radio" id="budgetB" name="budget" value="2,800원">
                 <label for="budgetB">C프레소 (하루 약 2800원)</label><br>
-                <input type="radio" id="budgetC" name="budget" value="C">
+                <input type="radio" id="budgetC" name="budget" value="4,500원">
                 <label for="budgetC">별다방 (하루 약 4500원)</label><br>
-                <input type="radio" id="budgetD" name="budget" value="D">
+                <input type="radio" id="budgetD" name="budget" value="금액 상관 없음">
                 <label for="budgetD">건강을 위해서라면 금액 상관없이</label><br>
                 <button type="button" id="submitSurvey" >제출</button>
-            </form>
+        </form>    
         </div>
     </div>
   </div>
