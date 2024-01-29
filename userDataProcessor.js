@@ -1,7 +1,22 @@
+// 로컬 스토리지에서 사용자 데이터를 가져옵니다.
 const userData = JSON.parse(localStorage.getItem('userData')) || {};
+
+// 사용자의 성별을 가져오거나 기본값을 설정합니다.
 const userGender = userData.gender || '미응답';
+
+// 현재 년도를 기준으로 사용자의 나이를 계산합니다.
 const currentYear = new Date().getFullYear();
 const userAge = userData.birthYear ? currentYear - userData.birthYear : '미응답';
+
+// 사용자의 나이를 해당하는 연령대로 변환하는 함수입니다.
+// 예: 25세 -> '20대'
+function isAgeInRange(age, ageRange) {
+    if (typeof age !== 'number' || !ageRange) return false;
+    
+    const ageDecade = Math.floor(age / 10) * 10; // 나이를 10년 단위로 내림
+    const ageCategory = `${ageDecade}대`;
+    return ageRange.includes(ageCategory);
+}
 
 
 function loadHealthManagementData() {
