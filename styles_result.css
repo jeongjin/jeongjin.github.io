@@ -53,40 +53,44 @@ body, html {
 }
 
 .result-item {
-    display: flex;
-    flex-direction: column; /* 세로 방향 배열 */
-    align-items: flex-start; /* 좌측 정렬 */
-    padding: 1em;
-    margin-bottom: 1em;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: #1f1f1f;
+    border: 1px solid #333;
     border-radius: 5px;
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: auto 1fr; /* 아이콘과 내용을 위한 컬럼 설정 */
+    align-items: center;
+    gap: 20px; /* 아이콘과 텍스트 사이의 간격 */
+    padding: 20px; /* 안쪽 여백 */
+}
+
+.result-item i {
+    font-size: 24px; /* 아이콘 크기 */
+    color: #ffffff; /* 아이콘 색상 */
 }
 
 .result-item h2 {
     font-size: 1em;
-    color: #333;
-    text-align: left; /* 제목 좌측 정렬 */
-    margin-bottom: 0.5em; /* 제목과 결과값 사이 간격 */
+    margin: 0; /* 마진 제거 */
 }
 
 .result-item p {
     font-size: 0.9em;
-    color: #666;
-    text-align: center; /* 결과값 중앙 정렬 */
-    flex: 1;
-}}
+    margin: 0; /* 마진 제거 */
+    color: #aaaaaa;
+}
 
 @media (max-width: 768px) {
     .survey-page {
-        grid-template-columns: repeat(2, 1fr); /* 모바일 화면에서 열 개수 조정 */
+        grid-template-columns: repeat(3, 1fr); /* 한 행에 3개의 아이템 */
     }
-
     .survey-header h1 {
-        font-size: 1.5em; /* 모바일 화면에서 제목 폰트 크기 조정 */
+        font-size: 1.5em;
     }
-
     .result-item {
-        padding: 0.5em; /* 모바일 화면에서 패딩 조정 */
+        gap: 10px; /* 모바일에서 간격 조정 */
+        padding: 10px; /* 모바일에서 안쪽 여백 조정 */
     }
 }
+
+

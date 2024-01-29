@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helsner 설문 결과</title>
+    <link rel="stylesheet" href="styles_result2.css">
+    <link rel="stylesheet" href="scores.css">
+    <!-- our project just needs Font Awesome Solid + Brands -->
+    <link href="./assets/css/fontawesome.css" rel="stylesheet">
+    <link href="./assets/css/brands.css" rel="stylesheet">
+    <link href="./assets/css/solid.css" rel="stylesheet">
+
+
+</head>
+<body>
+    <!-- 헤더 부분 -->
+    <div class="survey-header">
+        <h1>Helsner 설문 결과</h1>
+    </div>
+    <br>
+    <br>
+
+    <!-- 설문 결과 그리드 컨테이너 -->
+    <div id="surveyResultsContainer" class="survey-page">
+        <!-- 각 결과 항목은 'result-item' 클래스로 그리드 형태로 표현 -->
+        
+        <!-- 질문1. 성별 결과 아이템 -->
+        <div class="result-item">
+            <div class="header">
+                <i class="fa-solid fa-venus-mars"></i>
+                <h2>성별</h2>
+            </div>
+            <p id="genderResult">데이터 로딩중...</p>
+            
+        </div>
+
+        <!-- 질문2. 출생년도 결과 아이템 -->
+        <div class="result-item">
+            <div class="header">
+            <i class="fa-solid fa-cake-candles" alt="출생년도 아이콘"></i>
+            <h2>출생년도</h2>
+            </div>
+            <p id="birthYearResult">데이터 로딩중...</p>
+            
+        </div>
+
+        <!-- 질문3. 키 결과 아이템 -->
+        <div class="result-item">
+            <div class="header">
+                <i class="fa-solid fa-up-down" alt="키 아이콘"></i>
+                <h2>키</h2>
+            </div>
+            <p id="heightResult">데이터 로딩중...</p>
+            
+        </div>
+
+        <!-- 질문4. 몸무게 결과 아이템 -->
+        <div class="result-item">
+            
+            <div class="header">
+                <i class="fa-solid fa-weight-scale" alt="몸무게 아이콘"></i>
+                <h2>몸무게</h2> 
+            </div>
+            <p id="weightResult">데이터 로딩중...</p>
+        </div>
+
+       
+        <!-- 질문 5: 생활습관 결과 -->
+        <div class="result-item">
+            <div class="header">
+                <i class="fa-solid fa-shop" alt="생활습관 아이콘"></i>
+                <h2>생활습관</h2>
+                
+            </div>
+            <p id="lifestyleResult">데이터 로딩중...</p>
+        </div>
+
+        <!-- 질문 6: 식습관 결과 -->
+        <div class="result-item">
+            <div class="header">
+                <i class="fa-solid fa-bowl-food" alt="식습관 아이콘"></i>
+                <h2>식습관</h2>
+            </div>
+            <p id="dietHabitResult">데이터 로딩중...</p>
+        </div>
+
+        <!-- 질문 7: 과거 질환 결과 -->
+        <div class="result-item">
+            <div class="header">
+                <i class="fa-solid fa-clock-rotate-left" alt="과거 병력 아이콘"></i>
+                <h2>과거 질환</h2>
+            </div>
+            <p id="diseaseResult">데이터 로딩중...</p>
+        </div>
+
+        <!-- 질문 8: 복용 중인 의약품 결과 -->
+        <div class="result-item">
+            <div class="header">
+                <i class="fa-solid fa-prescription-bottle-medical" alt="복용 의약품 아이콘"></i>
+                <h2>복용 중인 의약품</h2>
+            </div>
+            <p id="medicineResult">데이터 로딩중...</p>
+        </div>
+
+        <!-- 질문 9: 가족력 결과 -->
+        <div class="result-item">
+            <div class="header">
+                <i class="fa-solid fa-people-roof" alt="가족력 아이콘"></i>
+                <h2>가족력</h2>
+            </div>
+            <p id="familyHistoryResult">데이터 로딩중...</p>    
+        </div>
+
+        <!-- 질문 10: 건강 상태 관련 사항 결과 -->
+        <div class="result-item">
+            <div class="header">
+                <i class="fa-solid fa-heart-pulse" alt="건강상태 아이콘"></i>
+                <h2>건강 상태 관련 사항</h2>
+            </div>
+            <p id="healthIssueResult">데이터 로딩중...</p>
+        </div>
+
+        <!-- 질문 11: 건강기능식품 결과 -->
+        <div class="result-item">
+            <div class="header">
+                <i class="fa-solid fa-jar-wheat" alt="건강기능식품 아이콘"></i>
+                <h2>건강기능식품</h2>
+            </div>
+            <p id="supplementResult">데이터 로딩중...</p>   
+        </div>
+
+        <!-- 질문 12: 알러지 결과 -->
+        <div class="result-item">
+            <div class="header">
+                <i class="fa-solid fa-hand-dots" alt="알러지 아이콘"></i>
+                <h2>알러지</h2>
+            </div>
+            <p id="allergyResult">데이터 로딩중...</p>  
+        </div>
+
+        <!-- 질문 13: 여성 건강 사항 결과 -->
+        <div class="result-item">
+            <div class="header">
+            <i class="fa-solid fa-venus" alt="여성 건강 아이콘"></i>
+                <h2>여성 건강 사항</h2>
+            </div>
+            <p id="optionResult">데이터 로딩중...</p>
+        </div>
+
+        <!-- 질문 14: 건강 관리 고민사항 결과 -->
+        <div class="result-item">
+            <div class="header">
+                <i class="fa-solid fa-house-medical-circle-check" alt="건강관리 아이콘"></i>
+                <h2>건강 관리 고민사항</h2>
+            </div> 
+            <p id="healthOptionsResult">데이터 로딩중...</p>
+        </div>
+
+        <!-- 질문 15: 건강관리 예산 결과 -->
+        <div class="result-item">
+            <div class="header">
+                <i class="fa-solid fa-comment-dollar alt="예산 아이콘"></i>
+                <h2>건강관리 예산</h2>
+            </div>     
+            <p id="budgetResult">데이터 로딩중...</p>
+              
+        </div>
+    </div>
+    <div>
+    <div id="health-indexes">
+    <div id="health-management-index">
+        <div class="header-container">
+            <h2>건강관리지수 총점</h2>
+            <span class="total-managementscore-circle">80</span>
+        </div>
+      <div class="progress-bar" data-score="80">
+        <span class="score" id="management-score">80</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+        <div class="progress"></div>
+      </div>
+      <ul class="sub-indexes">
+        <li><span class="sub-index-name">- 식습관 지수</span>
+          <div class="progress-bar" data-score="70">
+            <span class="score" id="nutrition-score">70</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li><span class="sub-index-name">- 흡연 지수</span>
+          <div class="progress-bar" data-score="90">
+            <span class="score" id="smoking-score">90</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li><span class="sub-index-name">- 음주 지수</span>
+          <div class="progress-bar" data-score="50">
+            <span class="score" id="drinking-score">50</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li><span class="sub-index-name">- 섭취 지수</span>
+          <div class="progress-bar" data-score="60">
+            <span class="score" id="intake-score">60</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li><span class="sub-index-name">- 광합성 지수</span>
+          <div class="progress-bar" data-score="85">
+            <span class="score" id="synthesis-score">85</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li><span class="sub-index-name">- 운동 지수</span>
+          <div class="progress-bar" data-score="75">
+            <span class="score" id="exercise-score">75</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+            <div class="progress"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <div id="health-status-index">
+      
+      <div class="header-container">
+        <h2>건강현황지수 총점</h2>
+        <span class="total-statusscore-circle">80</span>
+    </div>
+      <div class="progress-bar" data-score="75">
+        <span class="score" id="status-score">75</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+        <div class="progress"></div>
+      </div>
+      <ul class="sub-indexes">
+        <li><span class="sub-index-name">- 질환력 지수</span>
+          <div class="progress-bar" data-score="65">
+            <span class="score" id="disease-score">65</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li><span class="sub-index-name">- 복용력 지수</span>
+          <div class="progress-bar" data-score="70">
+            <span class="score" id="medication-score">70</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li><span class="sub-index-name">- 가족력 지수</span>
+          <div class="progress-bar" data-score="75">
+            <span class="score" id="family-score">75</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li><span class="sub-index-name">- 면역력 지수</span>
+          <div class="progress-bar" data-score="80">
+            <span class="score" id="immune-score">80</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li><span class="sub-index-name">- 주의 지수</span>
+          <div class="progress-bar" data-score="60">
+            <span class="score" id="attention-score">60</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li><span class="sub-index-name">- 체형 지수</span>
+          <div class="progress-bar" data-score="85">
+            <span class="score" id="body-score">85</span> <!-- 스코어 숫자 추가 및 ID 부여 -->
+            <div class="progress"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+    </div>
+    <<section class="health-section" id="health-recommendations-1">
+      <h2>성별과 나이에 따른 건강항목 추천</h2>
+      <div class="recommendations-grid">
+        <!-- 예시: 토탈 관리 항목 -->
+        <div class="card">
+            <i class="fa-solid fa-earth-americas"></i>
+            <h3>토탈 관리</h3>
+            <p class="title">토탈 관리(멀티비타민&미네랄), 전반적인 관리를 해야 해요.</p>
+            <p>토탈 관리 필요성</p>
+            <p>토탈 관리 방법 및 도움이 되는 건강기능식품 성분 안내</p>
+        </div>
+    
+        <!-- 다른 항목들도 비슷한 형태로 추가 -->
+    </div>
+  </section>
+  
+<section class="health-section" id="health-recommendations-2">
+    <h2>마이데이터 추천 건강 관리</h2>
+    <div class="recommendations-grid">
+      <!-- 예시: 토탈 관리 항목 -->
+      <div class="card">
+          <h3>토탈 관리</h3>
+          <p class="title">토탈 관리(멀티비타민&미네랄), 전반적인 관리를 해야 해요.</p>
+          <p>토탈 관리 필요성</p>
+          <p>토탈 관리 방법 및 도움이 되는 건강기능식품 성분 안내</p>
+      </div>
+  
+      <!-- 다른 항목들도 비슷한 형태로 추가 -->
+  </div>
+</section>
+
+<section class="health-section" id="health-recommendations-3">
+  <h2>건강 관심사항 추천 건강 관리</h2>
+  <div class="recommendations-grid">
+    <!-- 예시: 토탈 관리 항목 -->
+    <div class="card">
+        <h3>토탈 관리</h3>
+        <p class="title">토탈 관리(멀티비타민&미네랄), 전반적인 관리를 해야 해요.</p>
+        <p>토탈 관리 필요성</p>
+        <p>토탈 관리 방법 및 도움이 되는 건강기능식품 성분 안내</p>
+    </div>
+
+    <!-- 다른 항목들도 비슷한 형태로 추가 -->
+</div>
+</section>
+
+<section class="health-section" id="health-recommendations-4">
+  <h2>질환별 추천 건강 관리</h2>
+  <div class="recommendations-grid">
+    <!-- 예시: 토탈 관리 항목 -->
+    <div class="card">
+        <h3>토탈 관리</h3>
+        <p class="title">토탈 관리(멀티비타민&미네랄), 전반적인 관리를 해야 해요.</p>
+        <p>토탈 관리 필요성</p>
+        <p>토탈 관리 방법 및 도움이 되는 건강기능식품 성분 안내</p>
+    </div>
+
+    <!-- 다른 항목들도 비슷한 형태로 추가 -->
+</div>
+</section>
+
+<section class="health-section" id="health-recommendations-1">
+  <h2>알러지 제외 영양 성분</h2>
+  <div class="recommendations-grid">
+    <!-- 예시: 토탈 관리 항목 -->
+    <div class="card">
+        <h3>토탈 관리</h3>
+        <p class="title">토탈 관리(멀티비타민&미네랄), 전반적인 관리를 해야 해요.</p>
+        <p>토탈 관리 필요성</p>
+        <p>토탈 관리 방법 및 도움이 되는 건강기능식품 성분 안내</p>
+    </div>
+
+    <!-- 다른 항목들도 비슷한 형태로 추가 -->
+</div>
+</section>
+
+<section class="health-section" id="health-recommendations-1">
+  <h2>복용 건기식 중복 제외 영양성분</h2>
+  <div class="recommendations-grid">
+    <!-- 예시: 토탈 관리 항목 -->
+    <div class="card">
+        <h3>토탈 관리</h3>
+        <p class="title">토탈 관리(멀티비타민&미네랄), 전반적인 관리를 해야 해요.</p>
+        <p>토탈 관리 필요성</p>
+        <p>토탈 관리 방법 및 도움이 되는 건강기능식품 성분 안내</p>
+    </div>
+
+    <!-- 다른 항목들도 비슷한 형태로 추가 -->
+</div>
+</section>
+
+<section class="health-section" id="health-recommendations-1">
+  <h2>금기 의약품 제외 영양 성분</h2>
+  <div class="recommendations-grid">
+    <!-- 예시: 토탈 관리 항목 -->
+    <div class="card">
+        <h3>토탈 관리</h3>
+        <p class="title">토탈 관리(멀티비타민&미네랄), 전반적인 관리를 해야 해요.</p>
+        <p>토탈 관리 필요성</p>
+        <p>토탈 관리 방법 및 도움이 되는 건강기능식품 성분 안내</p>
+    </div>
+
+    <!-- 다른 항목들도 비슷한 형태로 추가 -->
+</div>
+</section>
+
+    <!-- 자바스크립트 파일 연결 -->
+    <script src="survey.js"></script>
+    <script>
+
+        window.onload = function() {
+        var userDataString = localStorage.getItem('userData');
+    
+        if (userDataString) {
+            try {
+                var userData = JSON.parse(userDataString);
+                // 각 결과를 해당 ID의 요소에 표시
+                document.getElementById("genderResult").textContent = userData.gender || '미응답';
+                document.getElementById("birthYearResult").textContent = userData.birthYear || '미응답';
+                document.getElementById("heightResult").textContent = userData.height || '미응답';
+                document.getElementById("weightResult").textContent = userData.weight || '미응답';
+                document.getElementById("lifestyleResult").textContent = userData.lifestyle.join(", ") || '미응답';
+                document.getElementById("dietHabitResult").textContent = userData.dietHabit.join(", ") || '미응답';
+                document.getElementById("diseaseResult").textContent = userData.disease || '미응답';
+                document.getElementById("medicineResult").textContent = userData.medicine || '미응답';
+                document.getElementById("familyHistoryResult").textContent = userData.familyHistory.join(", ") || '미응답';
+                document.getElementById("healthIssueResult").textContent = userData.healthIssue.join(", ") || '미응답';
+                document.getElementById("supplementResult").textContent = userData.supplement || '미응답';
+                document.getElementById("allergyResult").textContent = userData.allergy || '미응답';
+                document.getElementById("optionResult").textContent = userData.option || '미응답';
+                document.getElementById("healthOptionsResult").textContent = userData.healthOptions.join(", ") || '미응답';
+                document.getElementById("budgetResult").textContent = userData.budget || '미응답';
+            } catch (e) {
+                console.error('userData 파싱 오류:', e);
+            }
+        } else {
+            console.error('userData가 존재하지 않습니다.');
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+  var progressBars = document.querySelectorAll('.progress-bar');
+  
+  progressBars.forEach(function(bar) {
+    var score = bar.getAttribute('data-score');
+    bar.querySelector('.progress').style.width = score + '%';
+  });
+  });
+    </script>
+</body>
+</html>

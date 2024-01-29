@@ -1,0 +1,130 @@
+#health-indexes {
+  max-width: 960px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.progress-bar {
+  position: relative; /* 상대 위치 */
+  width: 100%; /* 전체 너비 */
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  flex-grow: 1; /* 가능한 모든 공간을 차지하도록 설정 */
+  margin-left: 0px; /* 이름과 진행바 사이의 간격 */
+}
+
+.progress-bar .progress {
+  height: 20px;
+  background-color: #4caf50;
+  width: 0%; /* 실제 점수에 따라 JS에서 동적으로 설정해야 함 */
+  border-radius: 5px;
+  transition: width 1s ease-in-out;
+}
+
+.sub-indexes {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.sub-indexes li {
+  position: relative; /* 상대 위치 */
+  padding-right: 0px; /* 점수 표시를 위한 오른쪽 패딩 추가 */
+  display: flex; /* Flexbox 레이아웃 적용 */
+  align-items: center; /* 세로 중앙 정렬 */
+  margin-bottom: 10px; /* 각 항목 사이의 여백 */
+}
+
+.sub-index-name {
+  display: inline-block;
+  width: 150px;
+  margin-right: opx;
+  margin-left:10px;
+  flex-shrink: 0; /* 이름이 축소되지 않도록 설정 */
+}
+
+.sub-indexes .progress-bar {
+  display: inline-block;
+  width: calc(100% - 150px); /* 서브 인덱스 이름 너비를 제외한 나머지 너비 */
+}
+
+@media (max-width: 768px) {
+  #health-indexes {
+    max-width: 100%;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .sub-index-name {
+    width: 100px; /* 모바일 화면에서의 서브 인덱스 이름 너비 */
+  }
+
+  .sub-indexes .progress-bar {
+    width: calc(100% - 110px); /* 모바일 화면에서의 서브 인덱스 진행 바 너비 */
+  }
+
+  .progress-bar .progress {
+    height: 15px; /* 모바일 화면에서의 진행 바 높이 */
+  }
+}
+
+.score {
+  position: absolute; /* 절대 위치 */
+  right: 0; /* 오른쪽 끝에 위치 */
+  top: 0; /* 상단에 위치 */
+  padding: 0 10px; /* 안쪽 여백 추가 */
+  background: #f5f5f5; /* 배경색 설정 */
+  color: #333; /* 텍스트 색상을 명확하게 설정 */
+  border-radius: 0 5px 5px 0; /* 오른쪽 상단과 하단의 모서리 둥글게 */
+  z-index: 2; /* 다른 요소 위에 표시 */
+  flex-shrink: 0; /* 점수가 축소되지 않도록 설정 */
+  margin-left: 10px; /* 진행바와 점수 사이의 간격 */
+}
+
+.header-container {
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center; /* 요소들 사이에 공간을 균등하게 분배 */
+  margin-bottom: 20px;
+}
+
+.header-container h2 {
+  margin-right: 0px;
+  font-size: 1.4em;
+  align-items: center;
+  color: #333;
+}
+
+.total-managementscore-circle  {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* 원의 너비와 높이 설정 */
+  height: 40px; /* 원의 너비와 높이 설정 */
+  margin-left: 20px; /* h2 태그와의 간격 */
+  background-color: #cb8f0d; /* 원하는 배경색 설정 */
+  color: white; /* 글자색은 흰색으로 설정 */
+  font-weight: bold;
+  border-radius: 50%; /* 원형 만들기 */
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
+}
+
+.total-statusscore-circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* 원의 너비와 높이 설정 */
+  height: 40px; /* 원의 너비와 높이 설정 */
+  margin-left: 20px; /* h2 태그와의 간격 */
+  background-color: #351fb7; /* 원하는 배경색 설정 */
+  color: white; /* 글자색은 흰색으로 설정 */
+  font-weight: bold;
+  border-radius: 50%; /* 원형 만들기 */
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
+}

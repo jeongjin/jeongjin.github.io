@@ -11,30 +11,55 @@ function completeStep1() {
 
 // 질문 2: 출생년도
 function completeStep2() {
-    var birthYear = document.getElementById('birthYear').value;
-    userData['birthYear'] = birthYear;
-    // 다음 질문으로 이동
-    document.getElementById('question3').style.display = 'block';
+    if (validateForm(2)) { // 2번 단계의 유효성 검사
+        var birthYear = document.getElementById('birthYear').value;
+        userData['birthYear'] = birthYear;
+
+        // 유효성 검사가 통과되면 다음 질문으로 이동
+        
+        //document.getElementById('question3').style.display = 'block'; // 다음 질문 표시
+        
+    } else {
+        // 유효성 검사 실패 시 경고 메시지
+        alert('모든 필수 항목을 입력해주세요.');
+    }
+
 }
 
 // 질문 3: 키
 function completeStep3() {
+
+    if (validateForm(3)) { // 3번 단계의 유효성 검사
     var height = document.getElementById('height').value;
     userData['height'] = height;
     // 다음 질문으로 이동
-    document.getElementById('question4').style.display = 'block';
+    //document.getElementById('question4').style.display = 'block';
+
+    } else {
+    // 유효성 검사 실패 시 경고 메시지
+    alert('모든 필수 항목을 입력해주세요.');
+    }
+    
 }
 
 // 질문 4: 몸무게
 function completeStep4() {
+
+    if (validateForm(4)) { // 4번 단계의 유효성 검사
     var weight = document.getElementById('weight').value;
     userData['weight'] = weight;
     // 다음 질문으로 이동
     document.getElementById('question5').style.display = 'block';
+    // 유효성 검사 실패 시 경고 메시지
+    alert('모든 필수 항목을 입력해주세요.');
+
+    }
 }
 
 // 질문 5: 생활습관
 function completeStep5() {
+
+    if (validateForm(5)) { // 5번 단계의 유효성 검사
     var lifestyle = [];
     var checkboxes = document.getElementsByName('lifestyle');
     for (var i = 0; i < checkboxes.length; i++) {
@@ -45,6 +70,10 @@ function completeStep5() {
     userData['lifestyle'] = lifestyle;
     // 다음 질문으로 이동
     document.getElementById('question6').style.display = 'block';
+    // 유효성 검사 실패 시 경고 메시지
+    alert('모든 필수 항목을 입력해주세요.');
+
+    }    
 }
 
 // 질문 6: 식습관
@@ -134,10 +163,10 @@ function completeStep14() {
     var healthOptions = [];
     var checkboxes = document.querySelectorAll('input[name="healthOptions"]:checked');
 
-    // 체크박스가 3개를 초과하여 선택되었을 경우 경고 창 표시 후 함수 종료
+    // 체크박스 선택 개수 제한 로직
     if (checkboxes.length > 3) {
         alert('최대 3개까지만 선택 가능합니다.');
-        return; // 여기서 함수 실행을 중단
+        return; // 함수 종료
     }
 
     // 선택된 체크박스의 값들을 healthOptions 배열에 추가
@@ -145,7 +174,10 @@ function completeStep14() {
         healthOptions.push(checkbox.value);
     });
 
-    // 체크박스의 개수가 3개 이하일 경우에만 15번 질문을 표시
+    // userData 객체에 건강 관심사 데이터 저장
+    userData['healthOptions'] = healthOptions;
+
+    // 다음 질문으로 이동
     if (checkboxes.length <= 3) {
         document.getElementById('question15').style.display = 'block';
     }

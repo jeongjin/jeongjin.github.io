@@ -1,4 +1,5 @@
 // 문서가 완전히 로드되면 실행될 함수를 설정합니다.
+
 document.addEventListener('DOMContentLoaded', function() {
     // 현재 진행 중인 설문 단계와 총 단계 수를 정의합니다.
     var currentStep = 1;
@@ -26,27 +27,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 다음 단계로 넘어가는 함수입니다.
     function goToNextStep(step) {
-        // 현재 단계의 폼 입력을 검증합니다.
-        if (validateForm(currentStep)) {
-            // 현재 단계를 숨기고 다음 단계를 표시합니다.
-            document.getElementById('question' + currentStep).style.display = 'none';
-            currentStep++;
-            if (currentStep <= totalSteps) {
-                document.getElementById('question' + currentStep).style.display = 'block';
-                // 진행률 표시바를 업데이트합니다.
-                updateProgressBar(currentStep, totalSteps);
-            } else {
-                // 모든 단계를 완료하면 설문을 제출합니다.
-                submitSurvey();
-            }
+    // 현재 단계의 폼 입력을 검증합니다.
+    if (validateForm(step)) {
+        // 현재 단계를 숨기고 다음 단계를 표시합니다.
+  
+        document.getElementById('question' + step).style.display = 'none';
+        currentStep++;
+
+        if (currentStep <= totalSteps) {
+            //각 버튼에 처리하는 형태로 변경
+            document.getElementById('question' + currentStep).style.display = 'block';
+            // 진행률 표시바를 업데이트합니다.
+            updateProgressBar(currentStep, totalSteps);
         } else {
-            // 필수 입력이 완료되지 않았을 경우 경고를 표시합니다.
-            alert('모든 필수 항목을 입력해주세요.');
+            // 모든 단계를 완료하면 설문을 제출합니다.
+
+            submitSurvey();
+        }
+        } else {
+        // 필수 입력이 완료되지 않았을 경우 경고를 표시합니다.
+        alert('모든 필수 항목을 입력해주세요.');
         }
     }
 
+    
     // 현재 단계의 폼 입력을 검증하는 함수입니다.
     function validateForm(currentStep) {
+        console.log("Validating form for step:", currentStep);
         var isValid = true;
         var form = document.getElementById('form' + currentStep);
         var inputs = form.querySelectorAll('input');
@@ -61,13 +68,14 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 // 일반 텍스트 입력의 경우 비어 있지 않은지 확인합니다.
                 if (!input.value.trim()) {
+                    console.log("Invalid input found:", input);
                     isValid = false;
                 }
             }
         });
-
+        console.log("Form validation result for step", currentStep, ":", isValid);
         return isValid;
-    }
+        }
 
 
     // 진행률 표시바를 업데이트하는 함수입니다.
