@@ -28,6 +28,7 @@ function loadHealthManagementData() {
             // 나이에 따라 데이터를 필터링합니다.
             const ageFilteredItems = filterItemsByAge(userAge, data);
             displayFilteredItems(ageFilteredItems, 'health-recommendations-2');
+            console.log("Data Items:", data);
         })
         .catch(error => console.error('Error loading health management data:', error));
 }
@@ -44,6 +45,11 @@ function filterItemsByAge(age, items) {
     if (age === null) return [];
 
     return items.filter(item => {
+        // '추천나이' 속성이 없거나 빈 문자열인 경우 필터링에서 제외
+        if (!item['추천나이'] || item['추천나이'].trim() === '') {
+            return false;
+        }
+
         const ageRange = item['추천나이'].split(',').map(range => range.trim());
         console.log("User AgeRange:", ageRange); // 나잇대 로그 출력
         return ageRange.includes(`${Math.floor(age / 10) * 10}대`);
