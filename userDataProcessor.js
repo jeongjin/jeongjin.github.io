@@ -29,6 +29,7 @@ function displayFilteredItems(items, sectionId) {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
+            <i class="${item['아이콘']}"></i>
             <h3>${item['항목명']}</h3>
             <p class="title">${item['리포트 타이틀']}</p>
             <p>${item['리포트 콘텐츠_01']}</p>
