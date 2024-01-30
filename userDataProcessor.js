@@ -45,6 +45,7 @@ function filterItemsByAge(age, items) {
 
     return items.filter(item => {
         const ageRange = item['추천나이'].split(',').map(range => range.trim());
+        console.log("User AgeRange:", ageRange); // 나잇대 로그 출력
         return ageRange.includes(`${Math.floor(age / 10) * 10}대`);
     });
 }
