@@ -399,16 +399,16 @@
                 document.getElementById("birthYearResult").textContent = userData.birthYear || '미응답';
                 document.getElementById("heightResult").textContent = userData.height || '미응답';
                 document.getElementById("weightResult").textContent = userData.weight || '미응답';
-                document.getElementById("lifestyleResult").textContent = Array.isArray(userData.lifestyle) && userData.lifestyle.length > 0 ? userData.lifestyle.join(", ") || '미응답';
-                document.getElementById("dietHabitResult").textContent = Array.isArray(userData.dietHabit) && userData.dietHabit.length > 0 ? userData.dietHabit.join(", ") || '미응답';
+                document.getElementById("lifestyleResult").textContent = Array.isArray(userData.lifestyle) && userData.lifestyle.length > 0 ? userData.lifestyle.join(", ") : '미응답';
+                document.getElementById("dietHabitResult").textContent = Array.isArray(userData.dietHabit) && userData.dietHabit.length > 0 ? userData.dietHabit.join(", ") : '미응답';
                 document.getElementById("diseaseResult").textContent = userData.disease || '미응답';
                 document.getElementById("medicineResult").textContent = userData.medicine || '미응답';
-                document.getElementById("familyHistoryResult").textContent = Array.isArray(userData.familyHistory) && userData.familyHistory.length > 0 ? userData.familyHistory.join(", ") || '미응답';
-                document.getElementById("healthIssueResult").textContent = Array.isArray(userData.healthIssue) && userData.healthIssue.length > 0 ? userData.healthIssue.join(", ") || '미응답';
+                document.getElementById("familyHistoryResult").textContent = Array.isArray(userData.familyHistory) && userData.familyHistory.length > 0 ? userData.familyHistory.join(", ") : '미응답';
+                document.getElementById("healthIssueResult").textContent = Array.isArray(userData.healthIssue) && userData.healthIssue.length > 0 ? userData.healthIssue.join(", ") : '미응답';
                 document.getElementById("supplementResult").textContent = userData.supplement || '미응답';
                 document.getElementById("allergyResult").textContent = userData.allergy || '미응답';
                 document.getElementById("optionResult").textContent = userData.option || '미응답';
-                document.getElementById("healthOptionsResult").textContent = Array.isArray(userData.healthOptions) && userData.healthOptions.length > 0 ? userData.healthOptions.join(", ") || '미응답';
+                document.getElementById("healthOptionsResult").textContent = Array.isArray(userData.healthOptions) && userData.healthOptions.length > 0 ? userData.healthOptions.join(", ") : '미응답';
                 document.getElementById("budgetResult").textContent = userData.budget || '미응답';
             } catch (e) {
                 console.error('userData 파싱 오류:', e);
