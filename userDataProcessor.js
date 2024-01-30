@@ -3,48 +3,26 @@ const userData = JSON.parse(localStorage.getItem('userData')) || {};
 
 // 사용자의 성별을 가져오거나 기본값을 설정합니다.
 const userGender = userData.gender || '미응답';
-
-// 현재 년도를 기준으로 사용자의 나이를 계산합니다.
-const currentYear = new Date().getFullYear();
-const userAge = userData.birthYear ? currentYear - userData.birthYear : '미응답';
-
-// 사용자의 나이를 해당하는 연령대로 변환하는 함수입니다.
-// 예: 25세 -> '20대'
-function isAgeInRange(age, ageRange) {
-    if (typeof age !== 'number' || !ageRange) return false;
-    
-    const ageDecade = Math.floor(age / 10) * 10; // 나이를 10년 단위로 내림
-    const ageCategory = `${ageDecade}대`;
-    return ageRange.includes(ageCategory);
-}
-
+console.log("User Gender:", userGender); // 성별 로그 출력
 
 function loadHealthManagementData() {
     fetch('Health_Management_Data.json')
         .then(response => response.json())
         .then(data => {
-            const filteredItems = filterItemsForUser(userGender, userAge, data);
-            displayFilteredItems(filteredItems);
+            const filteredItems = filterItemsForUser(userGender, data);
+            displayFilteredItems(filteredItems, 'health-recommendations-1'); // 섹션 ID 전달
         })
         .catch(error => console.error('Error loading health management data:', error));
 }
 
-function filterItemsForUser(gender, age, items) {
+function filterItemsForUser(gender, items) {
     return items.filter(item => {
-        const genderMatch = item['성별추천'] === 'TRUE' ? item['추천 성별'] === gender : true;
-        const ageMatch = item['나이 추천'] === 'TRUE' ? isAgeInRange(age, item['추천 나이']) : true;
-        return genderMatch && ageMatch;
+        return item['성별추천'] === 'TRUE' && item['추천성별'] === gender;
     });
 }
 
-function isAgeInRange(age, ageRange) {
-    // 나이 범위 확인 로직
-    return ageRange.split(',').some(range => range.trim() === age.toString());
-}
-
-
-function displayFilteredItems(items) {
-    const container = document.querySelector('.recommendations-grid');
+function displayFilteredItems(items, sectionId) {
+    const container = document.querySelector('#' + sectionId + ' .recommendations-grid');
     container.innerHTML = ''; // 기존 내용 초기화
 
     items.forEach(item => {
