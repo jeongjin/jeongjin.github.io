@@ -5,22 +5,51 @@ const userData = JSON.parse(localStorage.getItem('userData')) || {};
 const userGender = userData.gender || '미응답';
 console.log("User Gender:", userGender); // 성별 로그 출력
 
+// 사용자의 나이를 계산하는 함수입니다.
+function calculateAge(birthDate) {
+    const birthYear = parseInt(birthDate.split('-')[0], 10);
+    const currentYear = new Date().getFullYear();
+    return currentYear - birthYear;
+}
+
+// 사용자의 나이를 계산합니다.
+const userAge = userData.birthYear ? calculateAge(userData.birthYear) : null;
+console.log("User Age:", userAge); // 나이 로그 출력
+
+// JSON 데이터를 로드하고 처리합니다.
 function loadHealthManagementData() {
     fetch('Health_Management_Data.json')
         .then(response => response.json())
         .then(data => {
-            const filteredItems = filterItemsForUser(userGender, data);
-            displayFilteredItems(filteredItems, 'health-recommendations-1'); // 섹션 ID 전달
+            // 성별에 따라 데이터를 필터링합니다.
+            const genderFilteredItems = filterItemsForUser(userGender, data);
+            displayFilteredItems(genderFilteredItems, 'health-recommendations-1');
+
+            // 나이에 따라 데이터를 필터링합니다.
+            const ageFilteredItems = filterItemsByAge(userAge, data);
+            displayFilteredItems(ageFilteredItems, 'health-recommendations-2');
         })
         .catch(error => console.error('Error loading health management data:', error));
 }
 
+// 사용자의 성별에 따라 아이템을 필터링하는 함수입니다.
 function filterItemsForUser(gender, items) {
     return items.filter(item => {
         return item['성별추천'] === 'TRUE' && item['추천성별'] === gender;
     });
 }
 
+// 사용자의 나이에 따라 아이템을 필터링하는 함수입니다.
+function filterItemsByAge(age, items) {
+    if (age === null) return [];
+
+    return items.filter(item => {
+        const ageRange = item['추천나이'].split(',').map(range => range.trim());
+        return ageRange.includes(`${Math.floor(age / 10) * 10}대`);
+    });
+}
+
+// 필터링된 아이템을 화면에 표시하는 함수입니다.
 function displayFilteredItems(items, sectionId) {
     const container = document.querySelector('#' + sectionId + ' .recommendations-grid');
     container.innerHTML = ''; // 기존 내용 초기화
@@ -39,4 +68,5 @@ function displayFilteredItems(items, sectionId) {
     });
 }
 
+// 데이터 로드 함수를 실행합니다.
 loadHealthManagementData();
