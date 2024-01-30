@@ -26,13 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-      // submitSurvey 이벤트 리스너 추가
-      var submitSurveyButton = document.getElementById('submitSurvey');
-      if (submitSurveyButton) {
-          submitSurveyButton.addEventListener('click', function() {
-              // 설문 제출 관련 코드
-          });
-      }
     
 
     // 다음 단계로 넘어가는 함수입니다.
