@@ -1,13 +1,30 @@
 // 사용자의 답변을 저장할 객체 생성
 var userData = {};
+var dataOptionId =[];
 
 // 질문 1: 성별
 function completeStep1() {
-    var gender = document.querySelector('input[name="gender"]:checked').value;
-    userData['gender'] = gender;
-    // 다음 질문으로 이동 (예: display 속성을 변경하여 다음 질문을 보여줌)
+    var gender = document.querySelector('input[name="gender"]:checked');
+
+    if (gender) {
+        userData['gender'] = gender.value;
+        var optionID = gender.getAttribute('data-option-id');
+
+        if (optionID) {
+            dataOptionId.push(optionID);
+        } else {
+            console.log('선택된 성별에 data-option-id 속성이 없습니다.');
+        }
+    } else {
+        console.log('성별이 선택되지 않았습니다.');
+        return; // 성별이 선택되지 않았으므로 함수를 종료합니다.
+    }
+
+    console.log(dataOptionId);
     document.getElementById('question2').style.display = 'block';
 }
+
+
 
 // 질문 2: 출생년도
 function completeStep2() {
@@ -58,22 +75,29 @@ function completeStep4() {
 
 // 질문 5: 생활습관
 function completeStep5() {
-
     if (validateForm(5)) { // 5번 단계의 유효성 검사
-    var lifestyle = [];
-    var checkboxes = document.getElementsByName('lifestyle');
-    for (var i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-            lifestyle.push(checkboxes[i].value);
-        }
-    }
-    userData['lifestyle'] = lifestyle;
-    // 다음 질문으로 이동
-    document.getElementById('question6').style.display = 'block';
-    // 유효성 검사 실패 시 경고 메시지
-    alert('모든 필수 항목을 입력해주세요.');
+        var lifestyle = [];
+        var checkboxes = document.getElementsByName('lifestyle');
 
-    }    
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                // 체크박스의 value 값을 lifestyle 배열에 추가
+                lifestyle.push(checkboxes[i].value);
+
+                // 체크박스의 data-option-id 값을 dataOptionID 배열에 추가
+                var optionId = checkboxes[i].getAttribute('data-option-id');
+                dataOptionId.push(optionId);
+            }
+        }
+
+        userData['lifestyle'] = lifestyle;
+
+        // 다음 질문으로 이동
+        document.getElementById('question6').style.display = 'block';
+    } else {
+        // 유효성 검사 실패 시 경고 메시지
+        alert('모든 필수 항목을 입력해주세요.');
+    }
 }
 
 // 질문 6: 식습관

@@ -25,17 +25,17 @@
     </div>
     <div class="progress-text" id="progress-text">1 / 15</div>
 </div>
-
-        <div id="question1" class="survey-page">
-            <h2>질문 1: 성별을 알려주세요.</h2>
-            <form id="form1">
-                <input type="radio" id="genderMale" name="gender" value="남성">
-                <label for="genderMale">남성</label><br>
-                <input type="radio" id="genderFemale" name="gender" value="여성">
-                <label for="genderFemale">여성</label><br>
-                <button type="button" onclick="completeStep1()">다음</button>
-            </form>
-        </div>
+<!-- 질문 1 -->
+<div id="question1" class="survey-page">
+    <h2>질문 1: 성별을 알려주세요.</h2>
+    <form id="form1">
+        <input type="radio" id="genderMale" name="gender" value="남성" data-option-id="2">
+        <label for="genderMale">남성</label><br>
+        <input type="radio" id="genderFemale" name="gender" value="여성" data-option-id="1">
+        <label for="genderFemale">여성</label><br>
+        <button type="button" onclick="completeStep1()">다음</button>
+    </form>
+</div>
         <!-- 질문 2 -->
 <div id="question2" class="survey-page" style="display:none;">
     <h2>질문 2: 출생년도를 알려주세요.</h2>
@@ -67,16 +67,16 @@
 <div id="question5" class="survey-page" style="display:none;">
     <h2>질문 5: 아래에 생활습관에 해당하는 사항이 있는지 알려주세요. (중복선택 가능)</h2>
     <form id="form5">
-        <input type="checkbox" id="smoking" name="lifestyle" value="흡연" >
+        <input type="checkbox" id="smoking" name="lifestyle" value="흡연" data-option-id="3" >
         <label for="smoking">흡연을 하고 있어요. (전자담배 포함)</label><br>
         
-        <input type="checkbox" id="drinking" name="lifestyle" value="음주" >
+        <input type="checkbox" id="drinking" name="lifestyle" value="음주"  data-option-id="4">
         <label for="drinking">술을 일주일에 3회(2일에 1회, 2잔 이상) 이상 마셔요.</label><br>
         
-        <input type="checkbox" id="lack_of_exercise" name="lifestyle" value="운동부족" >
+        <input type="checkbox" id="lack_of_exercise" name="lifestyle" value="운동부족" data-option-id="5" >
         <label for="lack_of_exercise">평소 규칙적으로 하는 운동은 거의 없으며, 가끔 운동을 하더라도 20분을 넘지 않은 경우가 많아요.</label><br>
         
-        <input type="checkbox" id="lack_of_sunlight" name="lifestyle" value="햇볕부족" >
+        <input type="checkbox" id="lack_of_sunlight" name="lifestyle" value="햇볕부족"  data-option-id="6">
         <label for="lack_of_sunlight">하루에 햇볕을 쬐는 시간이 30분 이내예요.</label><br>
 
         <!-- '해당 없음' 체크박스 추가 -->

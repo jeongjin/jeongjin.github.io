@@ -1,5 +1,31 @@
 // 문서가 완전히 로드되면 실행될 함수를 설정합니다.
 
+    // 현재 단계의 폼 입력을 검증하는 함수입니다.
+    function validateForm(currentStep) {
+        console.log("Validating form for step:", currentStep);
+        var isValid = true;
+        var form = document.getElementById('form' + currentStep);
+        var inputs = form.querySelectorAll('input');
+
+        // 각 입력 필드를 검사합니다.
+        inputs.forEach(input => {
+            // 체크박스와 라디오 버튼의 경우 선택된 항목이 있는지 확인합니다.
+            if (input.type === 'checkbox' || input.type === 'radio') {
+                if (!document.querySelector('input[name="' + input.name + '"]:checked')) {
+                    isValid = false;
+                }
+            } else {
+                // 일반 텍스트 입력의 경우 비어 있지 않은지 확인합니다.
+                if (!input.value.trim()) {
+                    console.log("Invalid input found:", input);
+                    isValid = false;
+                }
+            }
+        });
+        console.log("Form validation result for step", currentStep, ":", isValid);
+        return isValid;
+        }
+
 document.addEventListener('DOMContentLoaded', function() {
     // 현재 진행 중인 설문 단계와 총 단계 수를 정의합니다.
     var currentStep = 1;
